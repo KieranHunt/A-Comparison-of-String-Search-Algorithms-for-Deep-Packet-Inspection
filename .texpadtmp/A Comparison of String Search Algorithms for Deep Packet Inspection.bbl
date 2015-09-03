@@ -1,8 +1,44 @@
 \begin{thebibliography}{1}
 
+\bibitem{Aho1975}
+A.~Aho and M.~Corasick.
+\newblock Efficient string matching: An aid to bibliographic search.
+\newblock {\em Communications of the ACM}, 1975.
+
+\bibitem{Baeza1992}
+R.~Baeza-Yates and G.~Gonnet.
+\newblock A new approach to text searching.
+\newblock {\em Communications of the ACM}, 1992.
+
+\bibitem{Bloom1970}
+B.~Bloom.
+\newblock Space/time trade-offs in hash coding with allowable errors.
+\newblock {\em Communications of the ACM}, 1970.
+
+\bibitem{Boyer1977}
+R.~Boyer and J.~Moore.
+\newblock A fast string searching algorithm.
+\newblock {\em Communications of the ACM}, 1977.
+
+\bibitem{Fan2014}
+B.~Fan, D.~Andersen, M.~Kaminsky, and M.~Mitzenmacher.
+\newblock Cuckoo filter: Practically better than bloom.
+\newblock In {\em Proceedings of the 10th ACM International on Conference on
+  Emerging Networking Experiments and Technologies}, 2014.
+
+\bibitem{Horspool1980}
+N.~Horspool.
+\newblock Practical fast searching in strings.
+\newblock {\em Software: Practice and Experience}, 1980.
+
 \bibitem{Karp1987}
 R.~Karp and M.~Rabin.
 \newblock Efficient randomized pattern-matching algorithms.
-\newblock {\em IBM Journal of Research and Development 31.2}, 1987.
+\newblock {\em IBM Journal of Research and Development}, 1987.
+
+\bibitem{Knuth1977}
+D.~Knuth, J.~Morris, and V.~Pratt.
+\newblock Fast pattern matching in strings.
+\newblock {\em SIAM Journal on Computing}, 1977.
 
 \end{thebibliography}
