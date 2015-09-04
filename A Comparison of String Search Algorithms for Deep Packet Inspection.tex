@@ -1,7 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx}
 
-
 \begin{document}
 
 \title{A Comparison of String Search Algorithms for Deep Packet Inspection}
@@ -13,34 +12,71 @@
 Contemporary deep packet inspection systems often rely on custom hardware or entrenched ideas about the string search algorithms used. These algorithms have mathematically provable time or space complexities however not much is empirically known about their performance on real-world packet datasets. We felt that some string search algorithms could produce results that differed from their theoretical performance within the context of packet inspection. Furthermore, we sought to show that even algorithms with similar theoretical performances could produce differing practical results. Our approach was to reimplement a variety of the established string search algorithms and run them through a diverse set of tests with both real-world and constructed datasets. Our tests found that the Bloom filter was the fastest overall, Rabin-Karp was the most memory efficient and that the Naïve algorithm was the slowest. Furthermore we found that, although the Bloom and Cuckoo filters have the same theoretical time complexity, the cuckoo filter was almost twice as slow as its counterpart. These findings help to show which algorithms perform best in practice and can help future algorithm designers to improve on the current approaches. In practice we show which algorithms a designer of a deep packet inspection system should consider implementing based on our findings.
 \end{abstract}
 
+\tableofcontents
+
 \section{Introduction}
 Deep packet inspection (DPI) forms part of the packet filtering that takes place on a computer network. For the general routing of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and obvious intrusions.
 
 Deep packet inspection is very prevalent today. From Internet Service Providers (ISP) to Corporate Networks. Packets are inspected for a plethora of reasons. 
 
-Today, many approaches exist to perform deep packet inspection. The approaches can be split into two categories: hardware and software. 
+Today, many approaches exist to perform deep packet inspection. The approaches can be split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (should cite) but has slower compile times and does not scale as well. Software, like Bro and Snort, is generally run on Commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Because it is not limited by the underlying hardware, the software implementations are able to scale both up and down to match the needs of the network.
 
-\subsection{Subsection Heading Here}
-Write your subsection text here.
+Bro, Snort and others.
+
+Speed requirements. Be at or above the network speed.
+
+Talk about packet inspection with respect to string search. Compare searching through a book to searching through a packet.
 
 \section{Algorithms}
-Write your conclusion here.
 
-\section{Testing Environment}
-Write your conclusion here.
+A bit about each of the algorithms. Their time and space complexities. Talk about each of their strengths a weaknesses. Try to guess which might be good at DPI.
+
+Talk about why we chose those algorithms. Talk about any that we didn't choose.
+
+\subsection{Na{\"i}ve}
+\subsection{Aho-Corasick}
+\cite{Aho1975}
+\subsection{Bitap}
+\cite{Baeza1992}
+\subsection{Bloom}
+\cite{Bloom1970}
+\subsection{Boyer-Moore}
+\cite{Boyer1977}
+\subsection{Cuckoo}
+\cite{Fan2014}
+\subsection{Horspool}
+\cite{Horspool1980}
+\subsection{Rabin-Karp}
+\cite{Karp1987}
+\subsection{Knuth-Morris-Pratt}
+\cite{Knuth1977}
+
+\section{Testing Environment}	
+Give a run-down of the system used.
+
+Talk about rust
+
+Talk about implementing the algorithms in Rust.
+
+Talk about what tests were run. What was measured.
+
+Talk about the kind of packet data used. 
+
 
 \section{Results}
-Write your conclusion here.
+Have some tables of general speeds across the various algorithms/datasets. Same for memory.
 
 \section{Analysis}
-Write your conclusion here.
+Compare results with each other.
+
+Compare results against the theoretical outcomes.
 
 \section{Conclusion}
-Write your conclusion here.
-
+Talk about going forward. Future work.
 \nocite{*}
 
-\bibliographystyle{plain}
+
+\bibliographystyle{apalike}
 \bibliography{bibliography}
 
 \end{document}

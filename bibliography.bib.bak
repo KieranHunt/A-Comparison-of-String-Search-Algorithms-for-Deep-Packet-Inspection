@@ -24,6 +24,17 @@
   Timestamp                = {2015.09.03}
 }
 
+@Article{Bloom1970,
+  Title                    = {Space/Time Trade-offs in Hash Coding with Allowable Errors},
+  Author                   = {Bloom, B.},
+  Journal                  = {Communications of the ACM},
+  Year                     = {1970},
+
+  File                     = {:Bloom1970.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
 @Article{Boyer1977,
   Title                    = {A Fast String Searching Algorithm},
   Author                   = {Boyer, R., and Moore, J.},
@@ -31,6 +42,18 @@
   Year                     = {1977},
 
   File                     = {:Boyer1977.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Conference{Fan2014,
+  Title                    = {Cuckoo Filter: Practically Better Than Bloom},
+  Author                   = {Fan, B., and Andersen, D., and Kaminsky, M., and Mitzenmacher, M.},
+  Booktitle                = {Proceedings of the 10th ACM International on Conference on Emerging Networking Experiments and Technologies},
+  Year                     = {2014},
+
+  __markedentry            = {},
+  File                     = {:Fan2014.pdf:PDF},
   Owner                    = {kieran},
   Timestamp                = {2015.09.03}
 }
