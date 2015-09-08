@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{comment}
 
 \begin{document}
 
@@ -11,8 +13,6 @@
 \begin{abstract}
 Contemporary deep packet inspection systems often rely on custom hardware or entrenched ideas about the string search algorithms used. These algorithms have mathematically provable time or space complexities however not much is empirically known about their performance on real-world packet datasets. We felt that some string search algorithms could produce results that differed from their theoretical performance within the context of packet inspection. Furthermore, we sought to show that even algorithms with similar theoretical performances could produce differing practical results. Our approach was to reimplement a variety of the established string search algorithms and run them through a diverse set of tests with both real-world and constructed datasets. Our tests found that the Bloom filter was the fastest overall, Rabin-Karp was the most memory efficient and that the Naïve algorithm was the slowest. Furthermore we found that, although the Bloom and Cuckoo filters have the same theoretical time complexity, the cuckoo filter was almost twice as slow as its counterpart. These findings help to show which algorithms perform best in practice and can help future algorithm designers to improve on the current approaches. In practice we show which algorithms a designer of a deep packet inspection system should consider implementing based on our findings.
 \end{abstract}
-
-\tableofcontents
 
 \section{Introduction}
 Deep packet inspection (DPI) forms part of the packet filtering that takes place on a computer network. For the general routing of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and obvious intrusions.
@@ -60,8 +60,51 @@ Talk about implementing the algorithms in Rust.
 
 Talk about what tests were run. What was measured.
 
-Talk about the kind of packet data used. 
+The data used in the tests was real-world packet data collected from Rhodes University ('s proxies? firewalls?). Rhodes University actively collects and records the packets into and out of its network. The data collected is grouped by month. Our dataset spanned from September 2013 to July 2015. Because of the long period of time for which the packets were captured, the amassed capture file are very large.
 
+\begin{comment}
+ To get the size of each file:
+    $ find . -name '*.cap' | xargs du -h
+ To get the number of packets in each file:
+    $ find . -name '*.pcap' | xargs wc
+ The previous one may be incorrect.
+\end{comment}
+
+\newcommand*\rot{\rotatebox{90}}
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{c|l|cc}
+                 Year & Month & \#Packets & Size on Disk (GB) \\
+                      \hline
+\multirow{4}{*}{\rot{2013}} & September &  & 5 \\
+                      & October &  &  23\\
+                      & November &  & 20 \\
+                      & December &  & 22 \\
+                      \hline
+\multirow{12}{*}{\rot{2014}} & January & & 30\\
+                      & Febraury & & 30 \\
+                      & March & & 51 \\
+                      & April & & 30 \\
+                      & May & & 0.34\\
+                      & June & & 17\\
+                      & July & & 23 \\
+                      & August & & 15 \\
+                      & September & & 24 \\
+                      & October & & 28 \\
+                      & November & & 30 \\
+                      & December & & 12 \\
+                      \hline
+\multirow{7}{*}{\rot{2015}} & January & & 22 \\
+                      & Febraury & & 25 \\
+                      & March & & 29 \\
+                      & April & & 13\\
+                      & May & & 31 \\
+                      & June & & 27 \\
+                      & July & & 0.448 \\
+\end{tabular}
+\end{table}
 
 \section{Results}
 Have some tables of general speeds across the various algorithms/datasets. Same for memory.

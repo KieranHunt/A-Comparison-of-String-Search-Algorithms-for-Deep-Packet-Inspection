@@ -32,11 +32,11 @@ combined_data <- merge(combined_data, boyermoore_data, by="id")
 names(combined_data) <- c("id", "cuckoo.time", "cuckoo.cum_sum", "bitap.time", "bitap.cum_sum", "ahocorasick.time", "ahocorasick.cum_sum", "bloom.time", "bloom.cum_sum", "boyermoore.time", "boyermoore.cum_sum")
 
 ggplot(combined_data, aes(x=id)) +
-    geom_line(aes(y = cuckoo.cum_sum, colour = "cuckoo: cum_sum")) +
-    geom_line(aes(y = bitap.cum_sum, colour = "bitap: cum_sum")) +
-    geom_line(aes(y = ahocorasick.cum_sum, colour = "ahocorasick: cum_sum")) +
-    geom_line(aes(y = bloom.cum_sum, colour = "bloom: cum_sum")) +
-    geom_line(aes(y = boyermoore.cum_sum, colour = "boyermoore: cum_sum")) +
+    geom_line(aes(y = cuckoo.cum_sum, colour = "Cuckoo")) +
+    geom_line(aes(y = bitap.cum_sum, colour = "Bitap")) +
+    geom_line(aes(y = ahocorasick.cum_sum, colour = "Aho-Corasick")) +
+    geom_line(aes(y = bloom.cum_sum, colour = "Bloom")) +
+    geom_line(aes(y = boyermoore.cum_sum, colour = "Boyer-Moore")) +
     labs(title = "Cumulative total packet processing time", y = "Cumulative pack processing time (μs)", x = "Packet ID") +
     fte_theme()
 ggsave("cum_sum.png", dpi=300, width=4, height=3)
