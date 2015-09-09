@@ -2,6 +2,8 @@
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{comment}
+\usepackage{amsmath}
+\usepackage{url}
 
 \begin{document}
 
@@ -21,19 +23,20 @@ Deep packet inspection is very prevalent today. From Internet Service Providers 
 
 Today, many approaches exist to perform deep packet inspection. The approaches can be split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (should cite) but has slower compile times and does not scale as well. Software, like Bro and Snort, is generally run on Commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Because it is not limited by the underlying hardware, the software implementations are able to scale both up and down to match the needs of the network.
 
-Bro, Snort and others.
+Bro\footnote{\url{https://www.bro.org/}} and Snort\footnote{\url{https://www.snort.org/}} are two platforms designed for network analysis.
 
-Speed requirements. Be at or above the network speed.
+Deep packet inspection is traditionally done within an intrusion detection system (IDS) and as such needs to be fast enough that it can match the speed of the network. Failing to at least match the network speed will results in a slowdown of traffic flowing into the network. Failing to meet the network speed could also mean that uninspected packets will be queued, if the DPI system continues to not be able to keep up with the incoming packets the system will usually start dropping packets. This result is certainly undesired as it negatively impacts the quality of services experienced by users on the network.  
 
 Talk about packet inspection with respect to string search. Compare searching through a book to searching through a packet.
 
-\section{Algorithms}
+\section{Algorithms} \label{algorithms}
 
 A bit about each of the algorithms. Their time and space complexities. Talk about each of their strengths a weaknesses. Try to guess which might be good at DPI.
 
 Talk about why we chose those algorithms. Talk about any that we didn't choose.
 
 \subsection{Na{\"i}ve}
+In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency. 
 \subsection{Aho-Corasick}
 \cite{Aho1975}
 \subsection{Bitap}
@@ -54,13 +57,15 @@ Talk about why we chose those algorithms. Talk about any that we didn't choose.
 \section{Testing Environment}	
 Give a run-down of the system used.
 
-Talk about rust
+The Rust language was used to implement all of the search algorithms. Rust was selected because it is fast and safe. Both  qualities are important in a real-time packet inspection scenarios. For interacting with both packet captures and live capture handles we used the Rust pcap\footnote{\url{https://github.com/ebfull/pcap}} library. This library provides a wrapper around libpcap\footnote{\url{http://www.tcpdump.org/}}. Through pcap, we are able to easily retrieve the packet data which can in turn be run through the various algorithms (See part \ref{algorithms}).
 
-Talk about implementing the algorithms in Rust.
+Each algorithm was implemented in Rust. All but the Bloom\footnote{\url{https://github.com/nicklan/bloom-rs}} \cite{Bloom1970} and Cuckoo\footnote{\url{https://github.com/seiflotfy/rust-cuckoofilter}} \cite{Fan2014} filters were were implemented by the authors.
 
-Talk about what tests were run. What was measured.
+Talk about the pcap format.
 
-The data used in the tests was real-world packet data collected from Rhodes University ('s proxies? firewalls?). Rhodes University actively collects and records the packets into and out of its network. The data collected is grouped by month. Our dataset spanned from September 2013 to July 2015. Because of the long period of time for which the packets were captured, the amassed capture file are very large.
+The data used in the tests was real-world packet data collected from Rhodes University ('s proxies? firewalls?). The libpcap library, in conjunction with tcpdump to collect and save the packet information. Rhodes University actively collects and records the packets into and out of its network. The data collected is grouped by month. Our dataset spanned from September 2013 to July 2015. Because of the long period of time for which the packets were captured, the amassed capture files are very large. According to Table \ref{captured_packet_data_sizes}, the same captures ranged from a few megabytes to over fifty gigabytes in size.
+
+Each algorithm was run over each month's packets for the same search string. 
 
 \begin{comment}
  To get the size of each file:
@@ -73,8 +78,8 @@ The data used in the tests was real-world packet data collected from Rhodes Univ
 \newcommand*\rot{\rotatebox{90}}
 \begin{table}[]
 \centering
-\caption{My caption}
-\label{my-label}
+\caption{Captured Packet Data Sizes}
+\label{captured_packet_data_sizes}
 \begin{tabular}{c|l|cc}
                  Year & Month & \#Packets & Size on Disk (GB) \\
                       \hline
