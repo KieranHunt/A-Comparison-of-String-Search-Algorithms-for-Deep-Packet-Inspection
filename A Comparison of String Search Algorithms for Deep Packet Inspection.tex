@@ -64,9 +64,11 @@ Each algorithm was implemented in Rust. All but the Bloom\footnote{\url{https://
 
 Talk about the pcap format.
 
-The data used in the tests was real-world packet data collected from Rhodes University ('s proxies? firewalls?). The libpcap library, in conjunction with tcpdump to collect and save the packet information. Rhodes University actively collects and records the packets into and out of its network. The data collected is grouped by month. Our dataset spanned from September 2013 to July 2015. Because of the long period of time for which the packets were captured, the amassed capture files are very large. According to Table \ref{captured_packet_data_sizes}, the same captures ranged from a few megabytes to over fifty gigabytes in size.
+The data used in the tests was real-world packet data collected the DNS servers of local schools. The libpcap library, in conjunction with tcpdump was used to collect and save the packet information. The total number of captured packets was culled to a reasonable one million packets to allow for reasonable processing and interpretation times.
 
-Each algorithm was run over each month's packets for the same search string. 
+Each algorithm was separately run over the dataset for a variety of search terms.
+
+Search terms: google, amazonaws.com
 
 \begin{comment}
  To get the size of each file:
@@ -75,45 +77,6 @@ Each algorithm was run over each month's packets for the same search string.
     $ find . -name '*.pcap' | xargs wc
  The previous one may be incorrect.
 \end{comment}
-
-\newcommand*\rot{\rotatebox{90}}
-\begin{table}[]
-\centering
-\caption{Captured Packet Data Sizes}
-\label{captured_packet_data_sizes}
-\begin{tabular}{c|l|cc}
-                 Year & Month & \#Packets & Size on Disk (GB) \\
-                      \hline
-\multirow{4}{*}{\rot{2013}} & September &  & 5 \\
-                      & October &  &  23\\
-                      & November &  & 20 \\
-                      & December &  & 22 \\
-                      \hline
-\multirow{12}{*}{\rot{2014}} & January & & 30\\
-                      & Febraury & & 30 \\
-                      & March & & 51 \\
-                      & April & & 30 \\
-                      & May & & 0.34\\
-                      & June & & 17\\
-                      & July & & 23 \\
-                      & August & & 15 \\
-                      & September & & 24 \\
-                      & October & & 28 \\
-                      & November & & 30 \\
-                      & December & & 12 \\
-                      \hline
-\multirow{7}{*}{\rot{2015}} & January & & 22 \\
-                      & Febraury & & 25 \\
-                      & March & & 29 \\
-                      & April & & 13\\
-                      & May & & 31 \\
-                      & June & & 27 \\
-                      & July & & 0.448 \\
-                      \hhline{=|=|==}
-                      & Total: &  &
-                      
-\end{tabular}
-\end{table}
 
 \section{Results}
 Have some tables of general speeds across the various algorithms/datasets. Same for memory.
