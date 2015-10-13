@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{comment}
@@ -20,26 +21,65 @@ Contemporary deep packet inspection systems often rely on custom hardware or ent
 \section{Introduction}
 Deep packet inspection (DPI) forms part of the packet filtering that takes place on a computer network. For the general routing of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and obvious intrusions.
 
-Deep packet inspection is very prevalent today. From Internet Service Providers (ISP) to Corporate Networks. Packets are inspected for a plethora of reasons. 
+Deep packet inspection is very prevalent today. From Internet Service Providers (ISPs) to Corporate Networks. Packets are inspected for a plethora of reasons. 
 
-Today, many approaches exist to perform deep packet inspection. The approaches can be split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (should cite) but has slower compile times and does not scale as well. Software, like Bro and Snort, is generally run on Commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Because it is not limited by the underlying hardware, the software implementations are able to scale both up and down to match the needs of the network.
+Today, many approaches exist to perform deep packet inspection. These approaches can be broadly split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (should cite) but has slower compile times and does not scale as well. Software, like Bro\footnote{\url{https://www.bro.org/}} and Snort\footnote{\url{https://www.snort.org/}}, is generally run on commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Owing to the fact that it is not tied to the underlying architecture, software implementations are able to easily scale both vertically (speed of the machines) and horizontally (number of machines) to match the needs of the network.
 
-Bro\footnote{\url{https://www.bro.org/}} and Snort\footnote{\url{https://www.snort.org/}} are two platforms designed for network analysis.
+Bro and Snort are two platforms designed for network analysis.
 
-Deep packet inspection is traditionally done within an intrusion detection system (IDS) and as such needs to be fast enough that it can match the speed of the network. Failing to at least match the network speed will results in a slowdown of traffic flowing into the network. Failing to meet the network speed could also mean that uninspected packets will be queued, if the DPI system continues to not be able to keep up with the incoming packets the system will usually start dropping packets. This result is certainly undesired as it negatively impacts the quality of services experienced by users on the network.  
+Deep packet inspection is traditionally done within an intrusion detection system (IDS) and as such needs to be fast enough that it can at least match the speed of the network. Failing to at least match the network speed will result in a slowdown of traffic flowing into the network, the queuing of yet to be inspected packets and, if the situation does not improve in time, the eventual dropping of packets as the queue fills. This result is certainly undesired as it negatively impacts the quality of service (QOS) experienced by users on the network.  
 
-Talk about packet inspection with respect to string search. Compare searching through a book to searching through a packet.
+Deep packet searching in general is very similar to searching through text. Packets contain a payload which is analogous to a body of text. Packet inspection differs from text searching in that searches through text are generally for a single or only a few terms at a time whilst in packet inspection scenarios the search terms can number in the thousands. 
 
 \section{Algorithms} \label{algorithms}
-
 A bit about each of the algorithms. Their time and space complexities. Talk about each of their strengths a weaknesses. Try to guess which might be good at DPI.
 
 Talk about why we chose those algorithms. Talk about any that we didn't choose.
 
 \subsection{Na{\"i}ve}
-In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency. 
+In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency.
+
+This basic algorithm simply tests every possible substring of the search term against every possible substring of the packet payload.
+
 \subsection{Aho-Corasick}
-\cite{Aho1975}
+This string search algorithm, originally proposed by \cite{Aho1975}, matches all search terms simultaneously.
+
+The Aho-Corasick algorithm was designed as an improvement on the trie (or keyword tree). A trie works by constructing a tree where each edge is labeled by a character and each node is the concatenation of edges leading up to the node. Nodes are then labeled with the index of the corresponding search term. For the search terms: he, she, his, hers (\(P = \{he, she, his, hers\}\)); the following trie can be constructed: 
+
+\begin{figure}[hbt]
+  \label{trie}
+  \centering
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/trie.pdf}
+  \caption{Trie (keyword tree) for the search terms \(P = \{he, she, his, hers\}\)}
+\end{figure}
+
+A lookup through a trie done by starting at the root, follow a path by matching the packet data against the edge labels for as long as possible. If the path leads to a node that is labeled: the string is a search term. If the path terminates at a node that does not have a label then no match is made. Lookups have \(O(nm)\) time complexity.
+
+As stated, the Aho-Corasick algorithm is an extension of the trie. The algorithm extends the trie into an automaton. The following functions are defined to determine the subsequent action given the current node and character being inspected: goto, failure and output.
+
+\subsubsection{The goto function}
+
+Defined as \(g(q, a)\), the goto function gives the next state by taking the current state (or node) \(q\) and a matching character \(a\) as parameters. If an edge \((q, v)\) has the label \(a\) then the goto function is defined as \(g(q, a) = v\). \(g(0, a) = 0\) for any \(a\) that does not have an edge labeled out of the root node. For anything else \(g(q, a) =  \emptyset\).
+
+\subsubsection{The failure function}
+
+The failure function, or \(f(q)\), defines the next state if no suitable state from the goto function has been found. In other words, when a mismatch occurs. The failure function finds the longest suffix of the label at \(q\) which is a prefix of a search term.
+
+\subsubsection{The output function}
+
+The output function, \(out(q)\) defines all search terms that have been recognised when entering \(q\).
+
+\begin{figure}[hbt]
+  \label{trie}
+  \centering
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/ac-automaton}
+  \caption{Aho-Corasick Automaton for \(P = \{he, she, his, hers\}\)}
+\end{figure}
+
+The algorithm has a proven linear time complexity proportional to the sum of the length of the packet, the search terms and the number of times a term is matched \citep{Aho1975}. Formally it has O(\(n + m + z\)) where \(n\) is the length of the packet payload, \(m\) is the length of the search terms and \(z\) is the number of times the pattern is matched.
+
 \subsection{Bitap}
 \cite{Baeza1992}
 \subsection{Bloom}
@@ -69,6 +109,8 @@ The data used in the tests was real-world packet data collected the DNS servers 
 Each algorithm was separately run over the dataset for a variety of search terms.
 
 Search terms: google, amazonaws.com
+
+Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.txt, Bird-Watching.txt, The-Adventures-of-Sherlock-Holmes.txt, The-Yellow-Wallpaper.txt, Frankenstein-or-the-Modern-Prometheus.txt, and The-Adventures-of-Tom-Sawyer-Complete.txt.
 
 \begin{comment}
  To get the size of each file:
