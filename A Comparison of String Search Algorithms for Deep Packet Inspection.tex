@@ -6,6 +6,8 @@
 \usepackage{amsmath}
 \usepackage{url}
 \usepackage{hhline}
+\usepackage{float}
+\usepackage{subcaption}
 
 \begin{document}
 
@@ -41,6 +43,44 @@ In order to objectively compare algorithms we implemented a control algorithm. N
 
 This basic algorithm simply tests every possible substring of the search term against every possible substring of the packet payload.
 
+\begin{figure}[hbt]
+  \label{naive}
+  \centering
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/naive-1}
+  \caption{The Na{\"i}ve algorithm compares the first letter of the search term to the first letter of the text.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/naive-2}
+  \caption{Because the first letter of the search term did not match the first letter of the text, the Na{\"i}ve algorithm now compares the second letter of the text to the first letter of the search term.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/naive-3}
+  \caption{After some iteration, the first letter of the search term is matched against the fifth letter of the text.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/naive-4}
+  \caption{The next letter of the text does not match the second letter of the search term. A match is not declared.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/naive-5}
+  \caption{As before letters from the search term match letters in the text. In this case the entirety of the search term was matched in the text and so a match is declared.}
+  \end{subfigure}
+  
+  \caption{The process by which the Na{\"i}ve algorithm conducts its search}
+  
+\end{figure}
+
 \subsection{Aho-Corasick}
 This string search algorithm, originally proposed by \cite{Aho1975}, matches all search terms simultaneously.
 
@@ -58,15 +98,15 @@ A lookup through a trie done by starting at the root, follow a path by matching 
 
 As stated, the Aho-Corasick algorithm is an extension of the trie. The algorithm extends the trie into an automaton. The following functions are defined to determine the subsequent action given the current node and character being inspected: goto, failure and output.
 
-\subsubsection{The goto function}
+\subsubsection{The goto function} \label{goto-function}
 
 Defined as \(g(q, a)\), the goto function gives the next state by taking the current state (or node) \(q\) and a matching character \(a\) as parameters. If an edge \((q, v)\) has the label \(a\) then the goto function is defined as \(g(q, a) = v\). \(g(0, a) = 0\) for any \(a\) that does not have an edge labeled out of the root node. For anything else \(g(q, a) =  \emptyset\).
 
-\subsubsection{The failure function}
+\subsubsection{The failure function} \label{failure-function}
 
 The failure function, or \(f(q)\), defines the next state if no suitable state from the goto function has been found. In other words, when a mismatch occurs. The failure function finds the longest suffix of the label at \(q\) which is a prefix of a search term.
 
-\subsubsection{The output function}
+\subsubsection{The output function} \label{output-function}
 
 The output function, \(out(q)\) defines all search terms that have been recognised when entering \(q\).
 
@@ -80,8 +120,12 @@ The output function, \(out(q)\) defines all search terms that have been recognis
 
 The algorithm has a proven linear time complexity proportional to the sum of the length of the packet, the search terms and the number of times a term is matched \citep{Aho1975}. Formally it has O(\(n + m + z\)) where \(n\) is the length of the packet payload, \(m\) is the length of the search terms and \(z\) is the number of times the pattern is matched.
 
+With the small initial overhead encountered when constructing the automaton (computing the goto [see \ref{goto-function}] , failure [see \ref{failure-function}] and output [see \ref{output-function}] functions), the Aho-Corasick algorithm can shave off precious time by eliminating unnecessary work using the failure functions.
+
 \subsection{Bitap}
-\cite{Baeza1992}
+
+Best known for its use in agrep (reference?), the Bitap algorithm \cite{Baeza1992} is an approximate string matching algorithm. That is to say that for a given search term and substring of text, the Bitap algorithm can tell you if those elements are approximately equal. The algorithm's speed is due to its use of bitwise operations on precomputed bitmasks 
+
 \subsection{Bloom}
 \cite{Bloom1970}
 \subsection{Boyer-Moore}
