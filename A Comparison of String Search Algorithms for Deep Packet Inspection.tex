@@ -127,9 +127,86 @@ With the small initial overhead encountered when constructing the automaton (com
 Best known for its use in agrep (reference?), the Bitap algorithm \cite{Baeza1992} is an approximate string matching algorithm. That is to say that for a given search term and substring of text, the Bitap algorithm can tell you if those elements are approximately equal. The algorithm's speed is due to its use of bitwise operations on precomputed bitmasks 
 
 \subsection{Bloom}
-\cite{Bloom1970}
+
+A Bloom filter, first proposed by \cite{Bloom1970}, is a data-structure used to determine whether something is a member of a set. Traditionally Bloom filters and other hash table-based algorithms have been used in networking applications such as routing, shallow packet inspection and network monitoring \citep{Song2005}›. In the context of packet inspection a Bloom filter is used to see if a substring of the packet payload is a member of the set containing all search terms.
+
+A bloom filter works by hashing each of the search terms a number of times, for each hash a bit is set in a corresponding bit vector. Lookup in a bloom filter involves hashing the string that you want to look up each time for each bit vector and checking to see if the bits are set. The price for efficient such efficient lookup is that a bloom filter can only tell you if a string in definitely not in the set. It can only say with a non-100 percent certainty if the string matches a search term.
+
+\begin{figure}[hbt]
+  \label{bloom-1}
+  \centering
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-1}
+  \caption{The bloom filter initially starts with hash tables initialised to zero, one for each of the hash functions being used.}
+  \end{subfigure}
+\end{figure} 
+
+\begin{figure}[hbt]
+  \ContinuedFloat  
+  \label{bloom-2}
+  \centering
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-2}
+  \caption{The first search term is hashed by each of the hashing algorithms, for each algorithm a single value is returned. The place in the hash table corresponding to the value is set. Here 5 is set for Hash 1, 3 for Hash 2 and 9 for Hash 10.}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[hbt]
+  \ContinuedFloat  
+  \label{bloom-3}
+  \centering
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-3}
+  \caption{A second search term is put through the three hashing functions. For this term Hash 1 gives the value of 7, Hash 2 gives 3 and Hash 3 gives 5. Note that Hash 2 has given the same values for both search terms.}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[hbt]
+  \ContinuedFloat  
+  \label{bloom-4}
+  \centering
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-4}
+  \caption{When doing a lookup in a Bloom table, a similar approach is used to insertion. The term being looked up is hashed by the various hashing algorithms and the hash tables are check to see if the corresponding bits are set. Here the first two hash tables show that the bits are set but the last hash table does not find a match. No match is declared.}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[hbt]
+  \ContinuedFloat  
+  \label{bloom-5}
+  \centering
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-5}
+  \caption{Another being of text is being evaluated. Here the text is put through the same three hashing algorithms and for each one a corresponding entry in the hash table is found. The Bloom filter declares this a likely match. The careful reader may notice that this is, in fact, not a match. Figures \ref{bloom-2} and \ref{bloom-3} show each term being added to the Bloom filter and the results of this search do not match the insertions.}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[hbt]
+  \ContinuedFloat  
+  \label{bloom-6}
+  \centering
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/bloom-6}
+  \caption{Another piece of text is put through the bloom filter with matches again appearing. These matches are not false positives as they correspond to the initially placed bit during the insertion phase.}
+  \end{subfigure}
+  \caption{The process of inserting into and doing a lookup on a Bloom filter.}
+\end{figure}
+
 \subsection{Boyer-Moore}
-\cite{Boyer1977}
+
+The Boyer-Moore algorithm \citep{Boyer1977} is an improved version of the Na{\"i}ve algorithm. It too uses a sliding window to compare the search string with substrings in the search text. Boyer-Moore's improvement on the Na{\"i}ve algorithm involves a pre-processing step whereby the algorithm determines certain ways that it can jump over text.
+
+In the Na{\"i}ve algorithm, if during the matching of a word it fails halfway through, the algorithm simply starts at the next character. The Boyer-Moore uses its pre-processing step to determine if and how far along in the text the algorithm can jump. Thus making fewer comparisons and increasing the overall speed.
+
+The Boyer-Moore algorithm works by comparing text from the rear to the front of the search pattern. If the character in the text does not match any character in the search pattern then the pattern can jump the length of the pattern forward. If the character is found somewhere within the search string then the pattern is shifted to where the characters line up and the process is then repeated.
+
 \subsection{Cuckoo}
 \cite{Fan2014}
 \subsection{Horspool}
