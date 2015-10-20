@@ -20,6 +20,8 @@
 Contemporary deep packet inspection systems often rely on custom hardware or entrenched ideas about the string search algorithms used. These algorithms have mathematically provable time or space complexities however not much is empirically known about their performance on real-world packet datasets. We felt that some string search algorithms could produce results that differed from their theoretical performance within the context of packet inspection. Furthermore, we sought to show that even algorithms with similar theoretical performances could produce differing practical results. Our approach was to reimplement a variety of the established string search algorithms and run them through a diverse set of tests with both real-world and constructed datasets. Our tests found that the Bloom filter was the fastest overall, Rabin-Karp was the most memory efficient and that the Naïve algorithm was the slowest. Furthermore we found that, although the Bloom and Cuckoo filters have the same theoretical time complexity, the cuckoo filter was almost twice as slow as its counterpart. These findings help to show which algorithms perform best in practice and can help future algorithm designers to improve on the current approaches. In practice we show which algorithms a designer of a deep packet inspection system should consider implementing based on our findings.
 \end{abstract}
 
+\tableofcontents
+
 \section{Introduction}
 Deep packet inspection (DPI) forms part of the packet filtering that takes place on a computer network. For the general routing of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and obvious intrusions.
 
@@ -43,7 +45,7 @@ In order to objectively compare algorithms we implemented a control algorithm. N
 
 This basic algorithm simply tests every possible substring of the search term against every possible substring of the packet payload.
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \label{naive}
   \centering
   
@@ -86,7 +88,7 @@ This string search algorithm, originally proposed by \cite{Aho1975}, matches all
 
 The Aho-Corasick algorithm was designed as an improvement on the trie (or keyword tree). A trie works by constructing a tree where each edge is labeled by a character and each node is the concatenation of edges leading up to the node. Nodes are then labeled with the index of the corresponding search term. For the search terms: he, she, his, hers (\(P = \{he, she, his, hers\}\)); the following trie can be constructed: 
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \label{trie}
   \centering
   \makeatletter
@@ -110,7 +112,7 @@ The failure function, or \(f(q)\), defines the next state if no suitable state f
 
 The output function, \(out(q)\) defines all search terms that have been recognised when entering \(q\).
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \label{trie}
   \centering
   \makeatletter
@@ -132,7 +134,7 @@ A Bloom filter, first proposed by \cite{Bloom1970}, is a data-structure used to 
 
 A bloom filter works by hashing each of the search terms a number of times, for each hash a bit is set in a corresponding bit vector. Lookup in a bloom filter involves hashing the string that you want to look up each time for each bit vector and checking to see if the bits are set. The price for efficient such efficient lookup is that a bloom filter can only tell you if a string in definitely not in the set. It can only say with a non-100 percent certainty if the string matches a search term.
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \label{bloom-1}
   \centering
   
@@ -143,7 +145,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \end{subfigure}
 \end{figure} 
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \ContinuedFloat  
   \label{bloom-2}
   \centering
@@ -154,7 +156,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \end{subfigure}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \ContinuedFloat  
   \label{bloom-3}
   \centering
@@ -165,7 +167,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \end{subfigure}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \ContinuedFloat  
   \label{bloom-4}
   \centering
@@ -176,7 +178,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \end{subfigure}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \ContinuedFloat  
   \label{bloom-5}
   \centering
@@ -187,7 +189,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \end{subfigure}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \ContinuedFloat  
   \label{bloom-6}
   \centering
@@ -199,7 +201,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \caption{The process of inserting into and doing a lookup on a Bloom filter.}
 \end{figure}
 
-\subsection{Boyer-Moore}
+\subsection{Boyer-Moore} \label{boyer-moore}
 
 The Boyer-Moore algorithm \citep{Boyer1977} is an improved version of the Na{\"i}ve algorithm. It too uses a sliding window to compare the search string with substrings in the search text. Boyer-Moore's improvement on the Na{\"i}ve algorithm involves a pre-processing step whereby the algorithm determines certain ways that it can jump over text.
 
@@ -207,11 +209,17 @@ In the Na{\"i}ve algorithm, if during the matching of a word it fails halfway th
 
 The Boyer-Moore algorithm works by comparing text from the rear to the front of the search pattern. If the character in the text does not match any character in the search pattern then the pattern can jump the length of the pattern forward. If the character is found somewhere within the search string then the pattern is shifted to where the characters line up and the process is then repeated.
 
-\subsection{Cuckoo}
-\cite{Fan2014}
 \subsection{Horspool}
-\cite{Horspool1980}
+The Horspool algorithm \citep{Horspool1980} (also known as the Boyer-Moore-Horspool algorithm) is a string search algorithm which is extremely fast. It has a average time complexity of O(\(n\)) and a worst case complexity of O(\(mn\)) \citep{Horspool1980}.
+
+The average time complexity is met when 
+
+Like the Boyer-Moore algorithm \citep{Boyer1977} (See \ref{boyer-moore}), the Horspool algorithm has a preprocess step in which a table is created representing each symbol of the alphabet and where the algorithm can skip to.
+
+The algorithm encounters its worst case time complexity behaviour when the search term very closely matches the many substrings in the text being searched through. 
+
 \subsection{Rabin-Karp}
+
 \cite{Karp1987}
 \subsection{Knuth-Morris-Pratt}
 \cite{Knuth1977}
