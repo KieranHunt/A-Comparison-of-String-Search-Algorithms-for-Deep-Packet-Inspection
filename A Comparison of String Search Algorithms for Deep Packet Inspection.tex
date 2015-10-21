@@ -40,13 +40,13 @@ A bit about each of the algorithms. Their time and space complexities. Talk abou
 
 Talk about why we chose those algorithms. Talk about any that we didn't choose.
 
-\subsection{Na{\"i}ve}
+\subsection{Na{\"i}ve} \label{sec:naive}
 In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency.
 
 This basic algorithm simply tests every possible substring of the search term against every possible substring of the packet payload.
 
 \begin{figure}[h!bt]
-  \label{naive}
+  \label{fig:naive}
   \centering
   
   \begin{subfigure}{\textwidth}
@@ -220,9 +220,44 @@ The algorithm encounters its worst case time complexity behaviour when the searc
 
 \subsection{Rabin-Karp}
 
-\cite{Karp1987}
+The Rabin-Karp algorithm \citep{Karp1987} is very similar to the Na{\"i}ve algorithm (See \ref{sec:naive}). It too compares substrings of the text to the search terms. The Rabin-Karp algorithm does, however, use hashing to faster compare search terms to the text. Rabin-Karp is well suited to searching for many search terms at the same time by simply taking an initial hash of the search terms and then doing multiple comparisons against the hashes of the substring of the text.
+
 \subsection{Knuth-Morris-Pratt}
-\cite{Knuth1977}
+
+The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the the Na{\"i}ve algorithm (See \ref{sec:naive}). The KMP algorithm starts by comparing the each character of both the search string and the text being searched through. If a match is found the second character of both the search string and text are compared. Each successive character is compared. If the end of the search term is reached then a match is declared. The power of the KMP algorithm is apparent when only part of the search term is matched. By keeping a record of the previous comparisons, if the algorithm has noted that the start of the pattern has occurred elsewhere then a jump to that place can be made without the interim comparisons.
+
+\begin{figure}[h!bt]
+  \label{fig:naive}
+  \centering
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/knuth-morris-pratt-1}
+  \caption{The KMP algorithm compares the first letter of the search string with the first letter of the text. No match is found.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/knuth-morris-pratt-2}
+  \caption{The algorithm moved on to the second letter of the text and compares it with the first letter of the search term. No match is found.}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/knuth-morris-pratt-3}
+  \caption{Now the KMP algorithm compares the first letter of the search string with the third letter of the text. A match is found. The fourth and fifth letters of the text are compared with the second and third of the search term and they too match. Finally the the fourth letter of the search term is compared with the }
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+  \makeatletter
+  \includegraphics[width=\textwidth]{images/knuth-morris-pratt-4}
+  \caption{}
+  \end{subfigure}
+
+  
+  \caption{The KMP algorithm performing a search for the term ``oden" in the string ``Rhodes rhodent"}
+  
+\end{figure}
 
 \section{Testing Environment}	
 Give a run-down of the system used.
@@ -253,6 +288,21 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 Have some tables of general speeds across the various algorithms/datasets. Same for memory.
 
 \section{Analysis}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/cum_sum_packets_google.pdf}
+  \caption{Cumulative sum of processing times of packets in Dataset A for the term ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/cum_sum_packets_amazonaws-com.pdf}
+  \caption{Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"}
+\end{figure}
+
+
+
 Compare results with each other.
 
 Compare results against the theoretical outcomes.
