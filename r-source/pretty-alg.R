@@ -1,3 +1,5 @@
+library(ggplot2); library(scales); library(grid); library(RColorBrewer)
+
 fte_theme <- function() {
 
       # Generate the colors for the chart procedurally with RColorBrewer
@@ -22,8 +24,7 @@ fte_theme <- function() {
       theme(axis.ticks=element_blank()) +
 
       # Format the legend, but hide by default
-      #theme(legend.position="none") +
-      theme(legend.title=element_blank()) +
+      theme(legend.position="none") +
       theme(legend.background = element_rect(fill=color.background)) +
       theme(legend.text = element_text(size=7,color=color.axis.title)) +
 
@@ -37,3 +38,7 @@ fte_theme <- function() {
       # Plot margins
       theme(plot.margin = unit(c(0.35, 0.2, 0.3, 0.35), "cm"))
     }
+
+times <- read.csv("Bitap_Apr14_1.cap.txt.shrunk.txt", header=F)
+ggplot(times, aes(times[1], times[2]))  + geom_histogram(binwidth=1, fill="#c0392b", alpha=0.75)# + fte_theme() + labs(title="Distribution of Listicle Sizes for BuzzFeed Listicles", x="# of Entries in Listicle", y="# of Listicles") + scale_x_continuous(breaks=seq(0,50, by=5)) + scale_y_continuous(labels=comma) + geom_hline(yintercept=0, size=0.4, color="black")
+ggsave("tutorial_1.png", dpi=300, width=4, height=3)
