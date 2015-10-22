@@ -7,12 +7,12 @@ library(reshape2)
 
 source("fte_theme.R")
 
-results_location <- "results/packets/google/"
+results_location <- "results/packets/amazonaws.com/"
 
 num_rounds <- 20
 data_raw <- list()
 algorithms <- c("Bitap", "Bloom", "BoyerMoore", "Horspool", "KnuthMorrisPratt", "Naive", "RabinKarp")
-number_of_rows <- 10
+number_of_rows <- 1000000
 
 for (i in 1:length(algorithms)) {
     data_raw[[i]] = list()
@@ -46,9 +46,8 @@ ggplot(combined_data, aes(x=id)) +
     geom_line(aes(y = Naive.cum_sum, color = "Naive")) +
     geom_line(aes(y = RabinKarp.cum_sum, color = "RabinKarp")) +
     scale_y_continuous(trans=log2_trans()) +
-    labs(title = "Cumulative total of each algorithm", y = "Total in micro seconds", x = "") +
-    fte_theme()
+    labs(title = "Cumulative total of each algorithm", y = "Cumulative total (μs)", x = "Packet number") +
+    fte_theme() +
+    theme(axis.text.x = element_text(hjust=1, angle=90))
 
-combined_data
-
-ggsave("cum_sum_redux.png", dpi=1200, width=4, height=3)
+ggsave("cum_sum_redux.png", dpi=1200, width=5, height=3)

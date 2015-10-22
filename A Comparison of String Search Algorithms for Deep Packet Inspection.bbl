@@ -1,0 +1,50 @@
+\begin{thebibliography}{}
+
+\bibitem[Aho and Corasick, 1975]{Aho1975}
+Aho, A. and Corasick, M. (1975).
+\newblock Efficient string matching: An aid to bibliographic search.
+\newblock {\em Communications of the ACM}.
+
+\bibitem[Baeza-Yates and Gonnet, 1992]{Baeza1992}
+Baeza-Yates, R. and Gonnet, G. (1992).
+\newblock A new approach to text searching.
+\newblock {\em Communications of the ACM}.
+
+\bibitem[Bloom, 1970]{Bloom1970}
+Bloom, B. (1970).
+\newblock Space/time trade-offs in hash coding with allowable errors.
+\newblock {\em Communications of the ACM}.
+
+\bibitem[Boyer and Moore, 1977]{Boyer1977}
+Boyer, R. and Moore, J. (1977).
+\newblock A fast string searching algorithm.
+\newblock {\em Communications of the ACM}.
+
+\bibitem[Fan et~al., 2014]{Fan2014}
+Fan, B., Andersen, D., Kaminsky, M., and Mitzenmacher, M. (2014).
+\newblock Cuckoo filter: Practically better than bloom.
+\newblock In {\em Proceedings of the 10th ACM International on Conference on
+  Emerging Networking Experiments and Technologies}.
+
+\bibitem[Horspool, 1980]{Horspool1980}
+Horspool, N. (1980).
+\newblock Practical fast searching in strings.
+\newblock {\em Software: Practice and Experience}.
+
+\bibitem[Karp and Rabin, 1987]{Karp1987}
+Karp, R. and Rabin, M. (1987).
+\newblock Efficient randomized pattern-matching algorithms.
+\newblock {\em IBM Journal of Research and Development}.
+
+\bibitem[Knuth et~al., 1977]{Knuth1977}
+Knuth, D., Morris, J., and Pratt, V. (1977).
+\newblock Fast pattern matching in strings.
+\newblock {\em SIAM Journal on Computing}.
+
+\bibitem[Song et~al., 2005]{Song2005}
+Song, H., Turner, J., Dharmapurikar, S., and Lockwood, J. (2005).
+\newblock Fast hash table lookup using extended bloom filter: An aid to network
+  processing.
+\newblock {\em ACM SIGCOMM Computer Communication Review}.
+
+\end{thebibliography}
