@@ -47,4 +47,9 @@ Song, H., Turner, J., Dharmapurikar, S., and Lockwood, J. (2005).
   processing.
 \newblock {\em ACM SIGCOMM Computer Communication Review}.
 
+\bibitem[Wu and Udi, 1992]{Wu1992}
+Wu, S. and Udi, M. (1992).
+\newblock Agrep — a fast approximate pattern-matching tool.
+\newblock In {\em Usenix Winter 1992}.
+
 \end{thebibliography}

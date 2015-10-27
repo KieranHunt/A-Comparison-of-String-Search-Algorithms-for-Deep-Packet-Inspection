@@ -8,6 +8,7 @@
 \usepackage{hhline}
 \usepackage{float}
 \usepackage{subcaption}
+\usepackage[margin=1in]{geometry}
 
 \begin{document}
 
@@ -36,17 +37,13 @@ Deep packet inspection is traditionally done within an intrusion detection syste
 Deep packet searching in general is very similar to searching through text. Packets contain a payload which is analogous to a body of text. Packet inspection differs from text searching in that searches through text are generally for a single or only a few terms at a time whilst in packet inspection scenarios the search terms can number in the thousands. 
 
 \section{Algorithms} \label{algorithms}
-A bit about each of the algorithms. Their time and space complexities. Talk about each of their strengths a weaknesses. Try to guess which might be good at DPI.
 
-Talk about why we chose those algorithms. Talk about any that we didn't choose.
+The following section gives some information on the different algorithms used. 
 
 \subsection{Na{\"i}ve} \label{sec:naive}
-In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency.
-
-This basic algorithm simply tests every possible substring of the search term against every possible substring of the packet payload.
-
+In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency. The algorithm simply tests every possible substring of the text against the search term. See Figure \ref{fig:naive} for an example.
 \begin{figure}[h!bt]
-  \label{fig:naive}
+  
   \centering
   
   \begin{subfigure}{\textwidth}
@@ -80,16 +77,16 @@ This basic algorithm simply tests every possible substring of the search term ag
   \end{subfigure}
   
   \caption{The process by which the Na{\"i}ve algorithm conducts its search}
-  
+  \label{fig:naive}
 \end{figure}
 
 \subsection{Aho-Corasick}
 This string search algorithm, originally proposed by \cite{Aho1975}, matches all search terms simultaneously.
 
-The Aho-Corasick algorithm was designed as an improvement on the trie (or keyword tree). A trie works by constructing a tree where each edge is labeled by a character and each node is the concatenation of edges leading up to the node. Nodes are then labeled with the index of the corresponding search term. For the search terms: he, she, his, hers (\(P = \{he, she, his, hers\}\)); the following trie can be constructed: 
+The Aho-Corasick algorithm was designed as an improvement on the trie (or keyword tree). A trie works by constructing a tree where each edge is labeled by a character and each node is the concatenation of edges leading up to the node. Nodes are then labeled with the index of the corresponding search term. For the search terms: he, she, his, hers (\(P = \{he, she, his, hers\}\)); a trie can be constructed (See \ref{fig:trie}).
 
 \begin{figure}[h!bt]
-  \label{trie}
+  \label{fig:trie}
   \centering
   \makeatletter
   \includegraphics[width=\textwidth]{images/trie.pdf}
@@ -102,22 +99,23 @@ As stated, the Aho-Corasick algorithm is an extension of the trie. The algorithm
 
 \subsubsection{The goto function} \label{goto-function}
 
-Defined as \(g(q, a)\), the goto function gives the next state by taking the current state (or node) \(q\) and a matching character \(a\) as parameters. If an edge \((q, v)\) has the label \(a\) then the goto function is defined as \(g(q, a) = v\). \(g(0, a) = 0\) for any \(a\) that does not have an edge labeled out of the root node. For anything else \(g(q, a) =  \emptyset\).
+Defined as \(g(q, a)\), the goto function gives the next state by taking the current state (or node) \(q\) and a matching character \(a\) as parameters. If an edge \((q, v)\) has the label \(a\) then the goto function is defined as \(g(q, a) = v\). \(g(0, a) = 0\) for any \(a\) that does not have an edge labeled out of the root node. For anything else \(g(q, a) =  \emptyset\). The goto function is represented as solid arrows in Figure \ref{fig:automaton}.
 
 \subsubsection{The failure function} \label{failure-function}
 
-The failure function, or \(f(q)\), defines the next state if no suitable state from the goto function has been found. In other words, when a mismatch occurs. The failure function finds the longest suffix of the label at \(q\) which is a prefix of a search term.
+The failure function, or \(f(q)\), defines the next state if no suitable state from the goto function has been found. In other words, when a mismatch occurs. The failure function finds the longest suffix of the label at \(q\) which is a prefix of a search term. The failure function is represented as dotted arrows in Figure \ref{fig:automaton}.
 
 \subsubsection{The output function} \label{output-function}
 
-The output function, \(out(q)\) defines all search terms that have been recognised when entering \(q\).
+The output function, \(out(q)\) defines all search terms that have been recognised when entering \(q\). The output function is represented as the text within the curly braces in Figure \ref{fig:automaton}.
 
 \begin{figure}[h!bt]
-  \label{trie}
+  
   \centering
   \makeatletter
   \includegraphics[width=\textwidth]{images/ac-automaton}
   \caption{Aho-Corasick Automaton for \(P = \{he, she, his, hers\}\)}
+  \label{fig:automaton}
 \end{figure}
 
 The algorithm has a proven linear time complexity proportional to the sum of the length of the packet, the search terms and the number of times a term is matched \citep{Aho1975}. Formally it has O(\(n + m + z\)) where \(n\) is the length of the packet payload, \(m\) is the length of the search terms and \(z\) is the number of times the pattern is matched.
@@ -126,7 +124,7 @@ With the small initial overhead encountered when constructing the automaton (com
 
 \subsection{Bitap}
 
-Best known for its use in agrep (reference?), the Bitap algorithm \cite{Baeza1992} is an approximate string matching algorithm. That is to say that for a given search term and substring of text, the Bitap algorithm can tell you if those elements are approximately equal. The algorithm's speed is due to its use of bitwise operations on precomputed bitmasks 
+Best known for its use in agrep \citep{Wu1992}\footnote{\url{https://github.com/Wikinaut/agrep/blob/master/bitap.c}}, the Bitap algorithm published by \cite{Baeza1992} is an approximate string matching algorithm. That is to say that for a given search term and substring of text, the Bitap algorithm can tell you if those elements are approximately equal. The algorithm's speed is due to its use of bitwise operations on precomputed bitmasks .
 
 \subsection{Bloom}
 
@@ -227,7 +225,7 @@ The Rabin-Karp algorithm \citep{Karp1987} is very similar to the Na{\"i}ve algor
 The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the the Na{\"i}ve algorithm (See \ref{sec:naive}). The KMP algorithm starts by comparing the each character of both the search string and the text being searched through. If a match is found the second character of both the search string and text are compared. Each successive character is compared. If the end of the search term is reached then a match is declared. The power of the KMP algorithm is apparent when only part of the search term is matched. By keeping a record of the previous comparisons, if the algorithm has noted that the start of the pattern has occurred elsewhere then a jump to that place can be made without the interim comparisons.
 
 \begin{figure}[h!bt]
-  \label{fig:naive}
+  
   \centering
   
   \begin{subfigure}{\textwidth}
@@ -256,8 +254,22 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
 
   
   \caption{The KMP algorithm performing a search for the term ``oden" in the string ``Rhodes rhodent"}
-  
+  \label{fig:knuth-morris-pratt}
 \end{figure}
+
+\subsection{Summary}
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{r|cccccccccc}
+    & Aho-Corasick & Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris-Pratt & Na{\"i}ve & Rabin-Karp\\
+    \hline
+    Time & O(\(m + n + o\)) & O(\(mn\)) & O(\(n^2\)) & O(\(mn\)) & O(\(n\)) & O(\(k\)) & O(\(n^2\)) & O(\(n + m\)) \\
+    Space & O(\(m\)) & O(\(m\)) & O(\(\)) & O(\(m + ?\)) & O(\(alphabet\)) & O(\(m\)) & N/A & O(\(p\))
+  \end{tabular}
+  \caption{Average algorithm time and space complexity}
+\end{table}
+
 
 \section{Testing Environment}	
 Give a run-down of the system used.
@@ -287,6 +299,24 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 \section{Results}
 Have some tables of general speeds across the various algorithms/datasets. Same for memory.
 
+\newcommand*\rot{\rotatebox{90}}
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{r|ccccccc}
+    & \rot{Alices-Adventures-in-Wonderland} & \rot{Bird-Watching} & \rot{Frankenstein-or-the-Modern-Prometheus} &  \rot{Pride-and-Prejudice} & \rot{The-Adventures-of-Sherlock-Holmes} & \rot{The-Adventures-of-Tom-Sawyer-Complete} & \rot{The-Yellow-Wallpaper}\\
+    \hline
+    Bitap & 657900 & 656200 & 657200 & 659000 & 654900 & 659500 & 656600 \\
+    Boyer-Moore & 12700 & 13470 & 13100 & 13660 & 13410 & 13120 & 12580 \\
+    Horspool & 19510 & 20730 & 20250 & 20990 & 20610 & 20080 & 19120 \\
+    Knuth-Morris-Pratt & 55150 & 55970 & 55540 & 55930 & 55730 & 55940 & 55150 \\
+    Na{\"i}ve & 124400 & 125200 & 124500 & 124900 & 124900 & 125100 & 124200 \\
+    Rabin-Karp & 17840000 & 17840000 & 17820000 & 17840000 &  17860000 & 17850000 & 17810000
+  \end{tabular}
+  \caption{Mean processing time of DPI when inspecting plain text for the term ``google"}
+\end{table}
+
+
 \section{Analysis}
 
 \begin{figure}[h!bt]
@@ -300,8 +330,6 @@ Have some tables of general speeds across the various algorithms/datasets. Same 
   \includegraphics[width=\textwidth]{graphs/cum_sum_packets_amazonaws-com.png}
   \caption{Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"}
 \end{figure}
-
-
 
 Compare results with each other.
 
