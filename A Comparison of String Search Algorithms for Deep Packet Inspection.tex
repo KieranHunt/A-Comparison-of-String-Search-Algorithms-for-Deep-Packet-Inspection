@@ -299,6 +299,29 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 \section{Results}
 Have some tables of general speeds across the various algorithms/datasets. Same for memory.
 
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{ccccccc}
+    Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp \\
+    \hline
+    48.6 & 51190 & 5.226 & 5.041 & 12.42 & 15.91 & 1701.0
+  \end{tabular}
+  \caption{Mean packet processing times for the various algorithms with the search term: ``amazonaws.com"}
+  \label{table:packet-amazonaws-mean}
+\end{table}
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{ccccccc}
+    Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp \\
+    \hline
+    71.51 & 48300 & 5.642 & 5.804 & 11.48 & 15.95 & 1720.0
+  \end{tabular}
+  \caption{Mean packet processing times for the various algorithms with the search term: ``google"}
+  \label{table:packet-google-mean}
+\end{table}
+
+
 \newcommand*\rot{\rotatebox{90}}
 
 \begin{table}[hbt]

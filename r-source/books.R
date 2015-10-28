@@ -7,7 +7,7 @@ library(reshape2)
 
 source("fte_theme.R")
 
-results_location <- "results/books/google/"
+results_location <- "results/books/amazonaws.com/"
 
 num_rounds <- 1000
 books <- c("Alices-Adventures-in-Wonderland.txt", "Bird-Watching.txt", "Frankenstein-or-the-Modern-Prometheus.txt", "Pride-and-Prejudice.txt", "The-Adventures-of-Sherlock-Holmes.txt", "The-Adventures-of-Tom-Sawyer-Complete.txt", "The-Yellow-Wallpaper.txt")
@@ -19,7 +19,9 @@ for (i in 1:length(algorithms)) {
     for (j in 1:length(books)) {
         for (k in 1:num_rounds){
             file <- paste(results_location, algorithms[[i]], "-", k, "-", books[[j]], sep="")
-            data_raw[i,j,k] <- as.numeric(readLines(file))
+            if (file.exists(file)) {
+                data_raw[i,j,k] <- as.numeric(readLines(file))
+            }
         }
     }
 }
