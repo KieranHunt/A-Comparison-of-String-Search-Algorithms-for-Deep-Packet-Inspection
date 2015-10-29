@@ -10,6 +10,8 @@
 \usepackage{subcaption}
 \usepackage[margin=1in]{geometry}
 
+\newcommand*\rot{\rotatebox{90}}
+
 \begin{document}
 
 \title{A Comparison of String Search Algorithms for Deep Packet Inspection}
@@ -297,7 +299,6 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 \end{comment}
 
 \section{Results}
-Have some tables of general speeds across the various algorithms/datasets. Same for memory.
 
 \begin{table}[hbt]
   \centering
@@ -321,13 +322,27 @@ Have some tables of general speeds across the various algorithms/datasets. Same 
   \label{table:packet-google-mean}
 \end{table}
 
-
-\newcommand*\rot{\rotatebox{90}}
-
 \begin{table}[hbt]
   \centering
+  \begin{tabular}{l|cc}
+    Book & Short Name & Size\\
+    \hline
+    Alices Adventures in Wonderland & AAW & 269K \\
+    Bird Watching & BW & 653K \\
+    Frankenstein or the Modern Prometheus & FMP & 525K \\
+    Pride and Prejudice & PP & 780K \\
+    The Adventures of Sherlock Holmes & ASH & 653K \\
+    The Adventures of Tom Sawyer Complete & ATSC & 525K \\
+    The Yellow Wallpaper & YW & 58K
+  \end{tabular}
+  \caption{}
+\end{table}
+
+
+\begin{table}[h!bt]
+  \centering
   \begin{tabular}{r|ccccccc}
-    & \rot{Alices-Adventures-in-Wonderland} & \rot{Bird-Watching} & \rot{Frankenstein-or-the-Modern-Prometheus} &  \rot{Pride-and-Prejudice} & \rot{The-Adventures-of-Sherlock-Holmes} & \rot{The-Adventures-of-Tom-Sawyer-Complete} & \rot{The-Yellow-Wallpaper}\\
+    & \rot{AAW} & \rot{BW} & \rot{FMP} &  \rot{PP} & \rot{ASH} & \rot{ATSC} & \rot{YW}\\
     \hline
     Bitap & 657900 & 656200 & 657200 & 659000 & 654900 & 659500 & 656600 \\
     Boyer-Moore & 12700 & 13470 & 13100 & 13660 & 13410 & 13120 & 12580 \\
@@ -337,7 +352,25 @@ Have some tables of general speeds across the various algorithms/datasets. Same 
     Rabin-Karp & 17840000 & 17840000 & 17820000 & 17840000 &  17860000 & 17850000 & 17810000
   \end{tabular}
   \caption{Mean processing time of DPI when inspecting plain text for the term ``google"}
+  \label{table:mean-books-google}
 \end{table}
+
+\begin{table}[h!bt]
+  \centering
+  \begin{tabular}{r|ccccccc}
+    & \rot{AAW} & \rot{BW} & \rot{FMP} &  \rot{PP} & \rot{ASH} & \rot{ATSC} & \rot{YW}\\
+    \hline
+    Bitap & 1262000 & 1260000 & 1258000 & 1259000 & 1260000 & 1260000 & 1259000 \\
+    Boyer-Moore & 5598 & 6120 & 5951 & 6300 & 6129 & 5927 & 5468 \\
+    Horspool & 8502 & 9392 & 9065 & 9620 & 9395 & 9035 & 8321 \\
+    Knuth-Morris-Pratt & 51980 & 54180 & 53420 & 54610 & 54160 & 53260 & 51450 \\
+    Na{\"i}ve & 115200 & 118000 & 117200 & 118800 & 118000 & 116900 & 114500 \\
+    Rabin-Karp & 426800 & 427400 & 427000 & 427200 & 427100 & 427200 & 426200
+  \end{tabular}
+  \caption{Mean processing time of DPI when inspecting plain text for the term ``amazonaws.com"}
+  \label{table:mean-books-amazonaws}
+\end{table}
+
 
 
 \section{Analysis}
