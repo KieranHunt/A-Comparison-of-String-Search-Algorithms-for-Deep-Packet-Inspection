@@ -42,7 +42,7 @@ Deep packet searching in general is very similar to searching through text. Pack
 
 The following section gives some information on the different algorithms used. 
 
-\subsection{Na{\"i}ve} \label{sec:naive}
+\subsection{Na{\"i}ve} \label{sec:naive} \label{sec:naive}
 In order to objectively compare algorithms we implemented a control algorithm. Named Na{\"i}ve, this\footnote{\url{https://github.com/KieranHunt/dpi_algorithms/blob/master/src/dpi_interface/naive.rs}} algorithm has a O(\(n^2\)) time efficiency. The algorithm simply tests every possible substring of the text against the search term. See Figure \ref{fig:naive} for an example.
 \begin{figure}[h!bt]
   
@@ -82,7 +82,7 @@ In order to objectively compare algorithms we implemented a control algorithm. N
   \label{fig:naive}
 \end{figure}
 
-\subsection{Aho-Corasick}
+\subsection{Aho-Corasick} \label{sec:aho-corasick}
 This string search algorithm, originally proposed by \cite{Aho1975}, matches all search terms simultaneously.
 
 The Aho-Corasick algorithm was designed as an improvement on the trie (or keyword tree). A trie works by constructing a tree where each edge is labeled by a character and each node is the concatenation of edges leading up to the node. Nodes are then labeled with the index of the corresponding search term. For the search terms: he, she, his, hers (\(P = \{he, she, his, hers\}\)); a trie can be constructed (See \ref{fig:trie}).
@@ -124,11 +124,11 @@ The algorithm has a proven linear time complexity proportional to the sum of the
 
 With the small initial overhead encountered when constructing the automaton (computing the goto [see \ref{goto-function}] , failure [see \ref{failure-function}] and output [see \ref{output-function}] functions), the Aho-Corasick algorithm can shave off precious time by eliminating unnecessary work using the failure functions.
 
-\subsection{Bitap}
+\subsection{Bitap} \label{sec:bitap}
 
 Best known for its use in agrep \citep{Wu1992}\footnote{\url{https://github.com/Wikinaut/agrep/blob/master/bitap.c}}, the Bitap algorithm published by \cite{Baeza1992} is an approximate string matching algorithm. That is to say that for a given search term and substring of text, the Bitap algorithm can tell you if those elements are approximately equal. The algorithm's speed is due to its use of bitwise operations on precomputed bitmasks .
 
-\subsection{Bloom}
+\subsection{Bloom} \label{sec:bloom}
 
 A Bloom filter, first proposed by \cite{Bloom1970}, is a data-structure used to determine whether something is a member of a set. Traditionally Bloom filters and other hash table-based algorithms have been used in networking applications such as routing, shallow packet inspection and network monitoring \citep{Song2005}›. In the context of packet inspection a Bloom filter is used to see if a substring of the packet payload is a member of the set containing all search terms.
 
@@ -201,7 +201,7 @@ A bloom filter works by hashing each of the search terms a number of times, for 
   \caption{The process of inserting into and doing a lookup on a Bloom filter.}
 \end{figure}
 
-\subsection{Boyer-Moore} \label{boyer-moore}
+\subsection{Boyer-Moore} \label{sec:boyer-moore}
 
 The Boyer-Moore algorithm \citep{Boyer1977} is an improved version of the Na{\"i}ve algorithm. It too uses a sliding window to compare the search string with substrings in the search text. Boyer-Moore's improvement on the Na{\"i}ve algorithm involves a pre-processing step whereby the algorithm determines certain ways that it can jump over text.
 
@@ -209,7 +209,7 @@ In the Na{\"i}ve algorithm, if during the matching of a word it fails halfway th
 
 The Boyer-Moore algorithm works by comparing text from the rear to the front of the search pattern. If the character in the text does not match any character in the search pattern then the pattern can jump the length of the pattern forward. If the character is found somewhere within the search string then the pattern is shifted to where the characters line up and the process is then repeated.
 
-\subsection{Horspool}
+\subsection{Horspool} \label{sec:horspool}
 The Horspool algorithm \citep{Horspool1980} (also known as the Boyer-Moore-Horspool algorithm) is a string search algorithm which is extremely fast. It has a average time complexity of O(\(n\)) and a worst case complexity of O(\(mn\)) \citep{Horspool1980}.
 
 The average time complexity is met when 
@@ -218,11 +218,11 @@ Like the Boyer-Moore algorithm \citep{Boyer1977} (See \ref{boyer-moore}), the Ho
 
 The algorithm encounters its worst case time complexity behaviour when the search term very closely matches the many substrings in the text being searched through. 
 
-\subsection{Rabin-Karp}
+\subsection{Rabin-Karp} \label{sec:rabin-karp}
 
 The Rabin-Karp algorithm \citep{Karp1987} is very similar to the Na{\"i}ve algorithm (See \ref{sec:naive}). It too compares substrings of the text to the search terms. The Rabin-Karp algorithm does, however, use hashing to faster compare search terms to the text. Rabin-Karp is well suited to searching for many search terms at the same time by simply taking an initial hash of the search terms and then doing multiple comparisons against the hashes of the substring of the text.
 
-\subsection{Knuth-Morris-Pratt}
+\subsection{Knuth-Morris-Pratt} \label{sec:knuth-morris-pratt}
 
 The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the the Na{\"i}ve algorithm (See \ref{sec:naive}). The KMP algorithm starts by comparing the each character of both the search string and the text being searched through. If a match is found the second character of both the search string and text are compared. Each successive character is compared. If the end of the search term is reached then a match is declared. The power of the KMP algorithm is apparent when only part of the search term is matched. By keeping a record of the previous comparisons, if the algorithm has noted that the start of the pattern has occurred elsewhere then a jump to that place can be made without the interim comparisons.
 
@@ -288,6 +288,36 @@ Each algorithm was separately run over the dataset for a variety of search terms
 
 Search terms: google, amazonaws.com
 
+\begin{comment}
+    grep -ao "amazonaws.com" datasetA.cap | wc -w
+    grep -ao "google" datasetA.cap | wc -w
+\end{comment}
+In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 times.
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{ll|rl||ll|rl}
+    \multicolumn{4}{c}{``amazonaws.com"} & \multicolumn{4}{c}{``google"} \\
+    Prefix & Count & Suffix & Count & Prefix & Count & Suffix & Count \\
+    \hline
+    a & 2783497 & m & 812339 & g & 465303 & e & 1061226\\
+    am & 101726 & om & 290968 & go & 19007 & le & 92113\\
+    ama & 55808 & com & 266672 & goo & 15456 & gle & 15432\\
+    amaz & 9111 & .com & 266645 & goog & 15231 & ogle & 15223\\
+    amazo & 9094 & s.com & 25810 & googl & 15223 & oogle & 15223\\
+    amazon & 9094 & ws.com & 6980 & google & 15223 & google & 15223\\
+    amazona & 7285 & aws.com & 6389 & & & &\\
+    amazonaw & 7285 & naws.com & 6389 & & & &\\
+    amazonaws & 7285 & onaws.com & 6389 & & & &\\
+    amazonaws. & 6389 & zonaws.com & 6389 & & & &\\
+    amazonaws.c & 6389 & azonaws.com & 6389 & & & &\\
+    amazonaws.co & 6389 & mazonaws.com & 6389 & & & &\\
+    amazonaws.com & 6389 & amazonaws.com & 6389 & & & &
+  \end{tabular}
+  \caption{}
+\end{table}
+
+
 Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.txt, Bird-Watching.txt, The-Adventures-of-Sherlock-Holmes.txt, The-Yellow-Wallpaper.txt, Frankenstein-or-the-Modern-Prometheus.txt, and The-Adventures-of-Tom-Sawyer-Complete.txt.
 
 \begin{comment}
@@ -298,7 +328,7 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
  The previous one may be incorrect.
 \end{comment}
 
-\section{Results}
+\section{Results} \label{sec:results}
 
 \begin{table}[hbt]
   \centering
@@ -371,9 +401,27 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
   \label{table:mean-books-amazonaws}
 \end{table}
 
-
-
 \section{Analysis}
+
+The results (section \ref{sec:results}) of the testing have proven to be quite interesting. From tables \ref{table:packet-amazonaws-mean} and \ref{table:packet-google-mean} we are able to fairly easily see which algorithms are the most performant. By comparing the mean packet processing times against each other we can arrange the algorithms by speed. Table \ref{table:ranked-mean-packet-processing-time} shows that, from the test results, the Horspool (subsection \ref{sec:horspool}) and Boyer-Moore
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{c|cc}
+    Rank & Algorithm\\
+    \hline
+    1 & Horspool \\
+      & Boyer-Moore \\
+    3 & Knuth-Morris-Pratt \\
+    4 & Na{\"i}ve \\
+    5 & Bitap \\
+    6 & Rabin-Karp \\
+    7 & Bitap 
+  \end{tabular}
+  \caption{Algorithms ranked by their mean packet processing speeds.}
+  \label{table:ranked-mean-packet-processing-time}
+\end{table}
+
 
 \begin{figure}[h!bt]
   \centering
@@ -387,9 +435,11 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
   \caption{Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"}
 \end{figure}
 
-Compare results with each other.
-
-Compare results against the theoretical outcomes.
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-bitap.png}
+  \caption{}
+\end{figure}
 
 \section{Conclusion}
 Talk about going forward. Future work.

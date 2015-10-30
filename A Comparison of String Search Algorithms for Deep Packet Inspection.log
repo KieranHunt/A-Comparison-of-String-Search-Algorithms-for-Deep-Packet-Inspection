@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  29 OCT 2015 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  30 OCT 2015 11:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -166,7 +166,11 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen128
 \Gm@layoutvoffset=\dimen129
 \Gm@dimlist=\toks22
-) (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
+) (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux
+
+LaTeX Warning: Label `sec:naive' multiply defined.
+
+)
 \openout1 = `"A Comparison of String Search Algorithms for Deep Packet Inspection.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -378,7 +382,11 @@ File: images/bloom-6.pdf Graphic file (type pdf)
  <use images/bloom-6.pdf>
 Package pdftex.def Info: images/bloom-6.pdf used on input line 198.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
- [5 <./images/ac-automaton.pdf>] [6 <./images/bloom-1.pdf> <./images/bloom-2.pdf> <./images/bloom-3.pdf>] [7 <./images/bloom-4.pdf> <./images/bloom-5.pdf>] <images/knuth-morris-pratt-1.pdf, id=92, 716.6775pt x 131.49126pt>
+ [5 <./images/ac-automaton.pdf>] [6 <./images/bloom-1.pdf> <./images/bloom-2.pdf> <./images/bloom-3.pdf>]
+
+LaTeX Warning: Reference `boyer-moore' on page 7 undefined on input line 217.
+
+[7 <./images/bloom-4.pdf> <./images/bloom-5.pdf>] <images/knuth-morris-pratt-1.pdf, id=92, 716.6775pt x 131.49126pt>
 File: images/knuth-morris-pratt-1.pdf Graphic file (type pdf)
  <use images/knuth-morris-pratt-1.pdf>
 Package pdftex.def Info: images/knuth-morris-pratt-1.pdf used on input line 235.
@@ -403,48 +411,56 @@ Overfull \hbox (55.47269pt too wide) in paragraph at lines 266--272
  [][] 
  []
 
-[8 <./images/bloom-6.pdf>] [9 <./images/knuth-morris-pratt-1.pdf> <./images/knuth-morris-pratt-2.pdf> <./images/knuth-morris-pratt-3.pdf> <./images/knuth-morris-pratt-4.pdf>]
-Overfull \hbox (6.6626pt too wide) in paragraph at lines 291--292
+[8 <./images/bloom-6.pdf>] [9 <./images/knuth-morris-pratt-1.pdf> <./images/knuth-morris-pratt-2.pdf> <./images/knuth-morris-pratt-3.pdf> <./images/knuth-morris-pratt-4.pdf>] Excluding 'comment' comment.
+Overfull \hbox (6.6626pt too wide) in paragraph at lines 321--322
 []\OT1/cmr/m/n/10 Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.txt, Bird-Watching.txt,
  []
 
 
-Overfull \hbox (23.05147pt too wide) in paragraph at lines 291--292
+Overfull \hbox (23.05147pt too wide) in paragraph at lines 321--322
 \OT1/cmr/m/n/10 The-Adventures-of-Sherlock-Holmes.txt, The-Yellow-Wallpaper.txt, Frankenstein-or-the-Modern-Prometheus.txt,
  []
 
 Excluding 'comment' comment. <graphs/cum_sum_packets_google.png, id=123, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_google.png Graphic file (type png)
  <use graphs/cum_sum_packets_google.png>
-Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 380.
+Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 428.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
  <graphs/cum_sum_packets_amazonaws-com.png, id=125, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_amazonaws-com.png Graphic file (type png)
  <use graphs/cum_sum_packets_amazonaws-com.png>
-Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 386.
+Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 434.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [10] [11 <./graphs/cum_sum_packets_google.png>]
+ <graphs/term_length_compare-bitap.png, id=126, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-bitap.png Graphic file (type png)
+ <use graphs/term_length_compare-bitap.png>
+Package pdftex.def Info: graphs/term_length_compare-bitap.png used on input line 440.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [10]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-) [12 <./graphs/cum_sum_packets_amazonaws-com.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
+ [11]) [12 <./graphs/cum_sum_packets_google.png>] [13 <./graphs/cum_sum_packets_amazonaws-com.png> <./graphs/term_length_compare-bitap.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 4350 strings out of 493093
- 66073 string characters out of 6134990
- 142262 words of memory out of 5000000
- 7752 multiletter control sequences out of 15000+600000
+ 4364 strings out of 493093
+ 66431 string characters out of 6134990
+ 151379 words of memory out of 5000000
+ 7765 multiletter control sequences out of 15000+600000
  10144 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,40p,1446b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (12 pages, 1948129 bytes).
+Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (13 pages, 2328554 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 129 compressed objects within 2 object streams
+ 187 PDF objects out of 1000 (max. 8388607)
+ 132 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
