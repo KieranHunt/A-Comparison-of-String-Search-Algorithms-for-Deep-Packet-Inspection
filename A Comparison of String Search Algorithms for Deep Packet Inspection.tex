@@ -291,8 +291,71 @@ Search terms: google, amazonaws.com
 \begin{comment}
     grep -ao "amazonaws.com" datasetA.cap | wc -w
     grep -ao "google" datasetA.cap | wc -w
+    
+    ---------------------------------------------
+    
+    #!/bin/bash
+
+    for i in $(eval echo "{1..${#2}}")
+    do
+        echo ${2:0:i}
+        grep -ao ${2:0:i} $1 | wc -w
+    done
+
+    for i in $(eval echo "{${#2}..1}")
+    do
+        echo ${2:i-1:${#2}}
+        grep -ao ${2:i-1:${#2}} $1 | wc -w
+    done
+    
 \end{comment}
 In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 times.
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{l|l|r||l|r}
+    \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} \\
+    Index & Prefix & Suffix & Prefix & Suffix \\
+    \hline
+    1. & a  & m  & g  & e \\
+    2. & am  & om  & go  & le \\
+    3. & ama  & com  & goo  & gle \\
+    4. & amaz  & .com  & goog  & ogle \\
+    5. & amazo  & s.com  & googl  & oogle \\
+    6. & amazon  & ws.com  & google  & google \\
+    7. & amazona  & aws.com  &  & \\
+    8. & amazonaw  & naws.com  &  & \\
+    9. & amazonaws  & onaws.com  &  & \\
+    10. & amazonaws.  & zonaws.com  &  & \\
+    11. & amazonaws.c  & azonaws.com  &  & \\
+    12. & amazonaws.co  & mazonaws.com  &  & \\
+    13. & amazonaws.com  & amazonaws.com  &  & 
+  \end{tabular}
+  \caption{}
+\end{table}
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{ll|rl||ll|rl}
+    \multicolumn{4}{c}{``amazonaws.com"} & \multicolumn{4}{c}{``google"} \\
+    Prefix & Count & Suffix & Count & Prefix & Count & Suffix & Count \\
+    \hline
+    a & 2783497 & m & 812339 & g & 465303 & e & 1061226\\
+    am & 101726 & om & 290968 & go & 19007 & le & 92113\\
+    ama & 55808 & com & 266672 & goo & 15456 & gle & 15432\\
+    amaz & 9111 & .com & 266645 & goog & 15231 & ogle & 15223\\
+    amazo & 9094 & s.com & 25810 & googl & 15223 & oogle & 15223\\
+    amazon & 9094 & ws.com & 6980 & google & 15223 & google & 15223\\
+    amazona & 7285 & aws.com & 6389 & & & &\\
+    amazonaw & 7285 & naws.com & 6389 & & & &\\
+    amazonaws & 7285 & onaws.com & 6389 & & & &\\
+    amazonaws. & 6389 & zonaws.com & 6389 & & & &\\
+    amazonaws.c & 6389 & azonaws.com & 6389 & & & &\\
+    amazonaws.co & 6389 & mazonaws.com & 6389 & & & &\\
+    amazonaws.com & 6389 & amazonaws.com & 6389 & & & &
+  \end{tabular}
+  \caption{Search term prefix and suffix frequency for the packet dataset: Dataset A.}
+\end{table}
 
 \begin{table}[hbt]
   \centering
