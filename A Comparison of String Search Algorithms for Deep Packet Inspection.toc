@@ -13,6 +13,6 @@
 \contentsline {subsection}{\numberline {2.8}Knuth-Morris-Pratt}{8}
 \contentsline {subsection}{\numberline {2.9}Summary}{8}
 \contentsline {section}{\numberline {3}Testing Environment}{8}
-\contentsline {section}{\numberline {4}Results}{10}
-\contentsline {section}{\numberline {5}Analysis}{10}
-\contentsline {section}{\numberline {6}Conclusion}{11}
+\contentsline {section}{\numberline {4}Results}{12}
+\contentsline {section}{\numberline {5}Analysis}{13}
+\contentsline {section}{\numberline {6}Conclusion}{14}

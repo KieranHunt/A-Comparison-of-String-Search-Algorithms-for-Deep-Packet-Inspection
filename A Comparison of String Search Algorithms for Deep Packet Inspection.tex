@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage[margin=1in]{geometry}
+\usepackage{longtable}
 
 \newcommand*\rot{\rotatebox{90}}
 
@@ -261,7 +262,7 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
 
 \subsection{Summary}
 
-\begin{table}[hbt]
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{r|cccccccccc}
     & Aho-Corasick & Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris-Pratt & Na{\"i}ve & Rabin-Karp\\
@@ -273,7 +274,7 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
 \end{table}
 
 
-\section{Testing Environment}	
+\section{Testing Environment} \label{sec:testing-environment}
 Give a run-down of the system used.
 
 The Rust language was used to implement all of the search algorithms. Rust was selected because it is fast and safe. Both  qualities are important in a real-time packet inspection scenarios. For interacting with both packet captures and live capture handles we used the Rust pcap\footnote{\url{https://github.com/ebfull/pcap}} library. This library provides a wrapper around libpcap\footnote{\url{http://www.tcpdump.org/}}. Through pcap, we are able to easily retrieve the packet data which can in turn be run through the various algorithms (See part \ref{algorithms}).
@@ -311,7 +312,7 @@ Search terms: google, amazonaws.com
 \end{comment}
 In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 times.
 
-\begin{table}[hbt]
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{l|l|r||l|r}
     & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} \\
@@ -334,7 +335,7 @@ In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 t
   \caption{}
 \end{table}
 
-\begin{table}[hbt]
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{l|l|l||l|l}
     & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} \\
@@ -357,16 +358,124 @@ In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 t
   \caption{Search term prefix and suffix frequency for the packet dataset: Dataset A.}
 \end{table}
 
-\begin{table}[hbt]
-  \centering
-  \begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l}
-    & \multicolumn{4}{c}{AAW} & \multicolumn{4}{c}{BW} & \multicolumn{4}{c}{FMP} & \multicolumn{4}{c}{PP} & \multicolumn{4}{c}{ASH} & \multicolumn{4}{c}{ATSC} & \multicolumn{4}{c}{YW} \\
-    & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} & \multicolumn{2}{c}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} \\
+\begin{longtable}{l|l|l||l|l}
+    & \multicolumn{2}{c|}{``amazonaws.com"} & \multicolumn{2}{c}{``google"} \\
     Index & Prefix Count & Suffix Count & Prefix Count & Suffix Count \\
     \hline
-  \end{tabular}
-  \caption{Search term prefix and suffix frequency for the book dataset.}
-\end{table}
+    & \multicolumn{4}{c}{AAW} \\
+    \hline
+    1. & 9081 & 2245 & 2750 & 15082 \\
+    2. & 189 & 334 & 197 & 790 \\
+    3. & 5 & 84 & 28 & 9 \\
+    4. & 0 & 79 & 0 & 0 \\
+    5. & 0 & 14 & 0 & 0 \\
+    6. & 0 & 0 & 0 & 0 \\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{BW} \\
+    \hline
+    1. & 34859 & 10713 & 10695 & 57776\\
+    2. & 741 & 1948 & 266 & 2983\\
+    3. & 18 & 556 & 50 & 93\\
+    4. & 0 & 516 & 0 & 0\\
+    5. & 0 & 100 & 0 & 0\\
+    6. & 0 & 0 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{FMP} \\
+    \hline
+    1. & 26315 & 10295 & 5761 & 45717\\
+    2. & 694 & 1475 & 172 & 2239\\
+    3. & 14 & 393 & 35 & 40\\
+    4. & 2 & 364 & 0 & 0\\
+    5. & 0 & 64 & 0 & 0\\
+    6. & 0 & 0 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{PP} \\
+    \hline
+    1. & 42154 & 13401 & 10160 & 70342\\
+    2. & 1330 & 2247 & 527 & 3617\\
+    3. & 27 & 710 & 199 & 347\\
+    4. & 18 & 655 & 0 & 0\\
+    5. & 0 & 144 & 0 & 0\\
+    6. & 0 & 0 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{ASH} \\
+    \hline
+    1. & 35301 & 11398 & 8033 & 54581 \\
+    2. & 962 & 2002 & 484 & 2872 \\
+    3. & 15 & 507 & 152 & 52 \\
+    4. & 2 & 459 & 0 & 0 \\
+    5. & 0 & 50 & 0 & 0\\
+    6. & 0 & 2 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{ATSC} \\
+    \hline
+    1. & 24160 & 7397 & 6904 & 37791\\
+    2. & 516 & 1968 & 601 & 2008\\
+    3. & 16 & 340 & 108 & 46\\
+    4. & 1 & 318 & 0 & 0\\
+    5. & 0 & 74 & 0 & 0\\
+    6. & 0 & 0 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \hline
+    & \multicolumn{4}{c}{YW} \\
+    \hline
+    1. & 2874 & 883 & 780 & 4488\\
+    2. & 55 & 157 & 54 & 213\\
+    3. & 5 & 45 & 17 & 5\\
+    4. & 1 & 43 & & 0\\
+    5. & 0 & 8 & 0 & 0\\
+    6. & 0 & 0 & 0 & 0\\
+    7. & 0 & 0 & & \\
+    8. & 0 & 0 & & \\
+    9. & 0 & 0 & & \\
+    10. & 0 & 0 & & \\
+    11. & 0 & 0 & & \\
+    12. & 0 & 0 & & \\
+    13. & 0 & 0 & & \\
+    \caption{Search string prefix and suffix frequency in the sample books.}
+\end{longtable}
+
 
 
 Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.txt, Bird-Watching.txt, The-Adventures-of-Sherlock-Holmes.txt, The-Yellow-Wallpaper.txt, Frankenstein-or-the-Modern-Prometheus.txt, and The-Adventures-of-Tom-Sawyer-Complete.txt.
@@ -381,29 +490,37 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 
 \section{Results} \label{sec:results}
 
-\begin{table}[hbt]
-  \centering
-  \begin{tabular}{ccccccc}
-    Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp \\
-    \hline
-    48.6 & 51190 & 5.226 & 5.041 & 12.42 & 15.91 & 1701.0
-  \end{tabular}
-  \caption{Mean packet processing times for the various algorithms with the search term: ``amazonaws.com"}
-  \label{table:packet-amazonaws-mean}
-\end{table}
+The following section provides the results obtained from running the myriad of tests designed for the project. A large amount of raw data (nearly 400 million datapoints) has been condensed into what is presented in the following pages.
 
-\begin{table}[hbt]
+Initially every algorithm was run over the packet sample dataset, described in section \ref{sec:testing-environment}. The time that each algorithm took to process each packet was recorded and logged. This is repeat for all algorithms. The entire test is then run twenty times over to smooth over potential anomalies caused by the server.
+
+The first of these tests was for the string: ``google". The mean processing time across all packets and the twenty tests is presented in table \ref{table:packet-google-mean}. The results of which can be found in Table \ref{table:packet-google-mean}.
+
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{ccccccc}
     Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp \\
     \hline
     71.51 & 48300 & 5.642 & 5.804 & 11.48 & 15.95 & 1720.0
   \end{tabular}
-  \caption{Mean packet processing times for the various algorithms with the search term: ``google"}
+  \caption{Mean packet processing times for the various algorithms with the search term: ``google". All values are in microseconds ($\mu$s).}
   \label{table:packet-google-mean}
 \end{table}
 
-\begin{table}[hbt]
+After searching for the keyword ``google", the tests were rerun using the keyword ``amazonaws.com``. The mean processing times for the algorithms with the keyword ``amazonaws.com" can be found in Table \ref{table:packet-amazonaws-mean}.
+
+\begin{table}[h!bt]
+  \centering
+  \begin{tabular}{ccccccc}
+    Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp \\
+    \hline
+    48.6 & 51190 & 5.226 & 5.041 & 12.42 & 15.91 & 1701.0
+  \end{tabular}
+  \caption{Mean packet processing times for the various algorithms with the search term: ``amazonaws.com". All values are in microseconds ($\mu$s).}
+  \label{table:packet-amazonaws-mean}
+\end{table}
+
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{l|cc}
     Book & Short Name & Size\\
@@ -456,7 +573,7 @@ Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.
 
 The results (section \ref{sec:results}) of the testing have proven to be quite interesting. From tables \ref{table:packet-amazonaws-mean} and \ref{table:packet-google-mean} we are able to fairly easily see which algorithms are the most performant. By comparing the mean packet processing times against each other we can arrange the algorithms by speed. Table \ref{table:ranked-mean-packet-processing-time} shows that, from the test results, the Horspool (subsection \ref{sec:horspool}) and Boyer-Moore
 
-\begin{table}[hbt]
+\begin{table}[h!bt]
   \centering
   \begin{tabular}{c|cc}
     Rank & Algorithm\\
@@ -486,10 +603,40 @@ The results (section \ref{sec:results}) of the testing have proven to be quite i
   \caption{Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"}
 \end{figure}
 
-\begin{figure}[hbt]
+\begin{figure}[h!bt]
   \centering
   \includegraphics[width=\textwidth]{graphs/term_length_compare-bitap.png}
-  \caption{}
+  \caption{Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-boyer-moore.png}
+  \caption{Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-horspool.png}
+  \caption{Comparison between the cumulative processing times of the Horspool algorithm for the terms ``amazonaws.com" and ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-knuth-morris-pratt.png}
+  \caption{Comparison between the cumulative processing times of the Knuth-Morris-Pratt algorithm for the terms ``amazonaws.com" and ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-naive.png}
+  \caption{Comparison between the cumulative processing times of the Na{\"i}ve algorithm for the terms ``amazonaws.com" and ``google"}
+\end{figure}
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/term_length_compare-rabin-karp.png}
+  \caption{Comparison between the cumulative processing times of the Rabin-Karp algorithm for the terms ``amazonaws.com" and ``google"}
 \end{figure}
 
 \section{Conclusion}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  2 NOV 2015 07:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  2 NOV 2015 15:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -166,6 +166,23 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen128
 \Gm@layoutvoffset=\dimen129
 \Gm@dimlist=\toks22
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip48
+\LTright=\skip49
+\LTpre=\skip50
+\LTpost=\skip51
+\LTchunksize=\count108
+\LTcapwidth=\dimen130
+\LT@head=\box30
+\LT@firsthead=\box31
+\LT@foot=\box32
+\LT@lastfoot=\box33
+\LT@cols=\count109
+\LT@rows=\count110
+\c@LT@tables=\count111
+\c@LT@chunks=\count112
+\LT@p@ftn=\toks23
 ) (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux
 
 LaTeX Warning: Label `sec:naive' multiply defined.
@@ -173,31 +190,31 @@ LaTeX Warning: Label `sec:naive' multiply defined.
 )
 \openout1 = `"A Comparison of String Search Algorithms for Deep Packet Inspection.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
-LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
+LaTeX Font Info:    ... okay on input line 16.
  (/usr/local/texlive/2014/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen130
-\scratchbox=\box30
-\nofMPsegments=\count109
-\nofMParguments=\count110
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen131
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count113
+\scratchdimen=\dimen131
+\scratchbox=\box34
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen132
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks25
 ) (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
  (/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty
@@ -232,6 +249,10 @@ Package grfext Info: Graphics extension search list:
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: longtable package is loaded.
+ (/usr/local/texlive/2014/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2013/02/03 v1.3-62 longtable captions (AR)
+)
 Package caption Info: End \AtBeginDocument code.
 
 *geometry* driver: auto-detecting
@@ -279,45 +300,45 @@ Missing character: There is no ¯ in font cmr9!
 {/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] <images/naive-1.pdf, id=13, 745.78625pt x 131.49126pt>
 File: images/naive-1.pdf Graphic file (type pdf)
  <use images/naive-1.pdf>
-Package pdftex.def Info: images/naive-1.pdf used on input line 53.
+Package pdftex.def Info: images/naive-1.pdf used on input line 54.
 (pdftex.def)             Requested size: 469.75502pt x 82.82387pt.
  <images/naive-2.pdf, id=14, 745.78625pt x 131.49126pt>
 File: images/naive-2.pdf Graphic file (type pdf)
  <use images/naive-2.pdf>
-Package pdftex.def Info: images/naive-2.pdf used on input line 59.
+Package pdftex.def Info: images/naive-2.pdf used on input line 60.
 (pdftex.def)             Requested size: 469.75502pt x 82.82387pt.
  <images/naive-3.pdf, id=15, 745.78625pt x 131.49126pt>
 File: images/naive-3.pdf Graphic file (type pdf)
  <use images/naive-3.pdf>
-Package pdftex.def Info: images/naive-3.pdf used on input line 65.
+Package pdftex.def Info: images/naive-3.pdf used on input line 66.
 (pdftex.def)             Requested size: 469.75502pt x 82.82387pt.
  <images/naive-4.pdf, id=16, 745.78625pt x 131.49126pt>
 File: images/naive-4.pdf Graphic file (type pdf)
  <use images/naive-4.pdf>
-Package pdftex.def Info: images/naive-4.pdf used on input line 71.
+Package pdftex.def Info: images/naive-4.pdf used on input line 72.
 (pdftex.def)             Requested size: 469.75502pt x 82.82387pt.
  <images/naive-5.pdf, id=17, 745.78625pt x 131.49126pt>
 File: images/naive-5.pdf Graphic file (type pdf)
  <use images/naive-5.pdf>
-Package pdftex.def Info: images/naive-5.pdf used on input line 77.
+Package pdftex.def Info: images/naive-5.pdf used on input line 78.
 (pdftex.def)             Requested size: 469.75502pt x 82.82387pt.
 
 
-Package caption Warning: \label without proper \caption on input line 91.
+Package caption Warning: \label without proper \caption on input line 92.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:trie' on page 2 undefined on input line 88.
+LaTeX Warning: Reference `fig:trie' on page 2 undefined on input line 89.
 
 <images/trie.pdf, id=18, 506.89375pt x 276.03125pt>
 File: images/trie.pdf Graphic file (type pdf)
  <use images/trie.pdf>
-Package pdftex.def Info: images/trie.pdf used on input line 94.
+Package pdftex.def Info: images/trie.pdf used on input line 95.
 (pdftex.def)             Requested size: 469.75502pt x 255.81348pt.
  [2] [3 <./images/naive-1.pdf> <./images/naive-2.pdf> <./images/naive-3.pdf> <./images/naive-4.pdf> <./images/naive-5.pdf>] <images/ac-automaton.pdf, id=45, 565.11125pt x 362.35374pt>
 File: images/ac-automaton.pdf Graphic file (type pdf)
  <use images/ac-automaton.pdf>
-Package pdftex.def Info: images/ac-automaton.pdf used on input line 118.
+Package pdftex.def Info: images/ac-automaton.pdf used on input line 119.
 (pdftex.def)             Requested size: 469.75502pt x 301.21797pt.
  [4 <./images/trie.pdf>]
 Missing character: There is no â in font cmr10!
@@ -326,145 +347,149 @@ Missing character: There is no º in font cmr10!
  <images/bloom-1.pdf, id=52, 615.29875pt x 210.7875pt>
 File: images/bloom-1.pdf Graphic file (type pdf)
  <use images/bloom-1.pdf>
-Package pdftex.def Info: images/bloom-1.pdf used on input line 143.
+Package pdftex.def Info: images/bloom-1.pdf used on input line 144.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
  <images/bloom-2.pdf, id=53, 615.29875pt x 210.7875pt>
 File: images/bloom-2.pdf Graphic file (type pdf)
  <use images/bloom-2.pdf>
-Package pdftex.def Info: images/bloom-2.pdf used on input line 154.
+Package pdftex.def Info: images/bloom-2.pdf used on input line 155.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
  <images/bloom-3.pdf, id=54, 615.29875pt x 210.7875pt>
 File: images/bloom-3.pdf Graphic file (type pdf)
  <use images/bloom-3.pdf>
-Package pdftex.def Info: images/bloom-3.pdf used on input line 165.
+Package pdftex.def Info: images/bloom-3.pdf used on input line 166.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
  <images/bloom-4.pdf, id=55, 615.29875pt x 210.7875pt>
 File: images/bloom-4.pdf Graphic file (type pdf)
  <use images/bloom-4.pdf>
-Package pdftex.def Info: images/bloom-4.pdf used on input line 176.
+Package pdftex.def Info: images/bloom-4.pdf used on input line 177.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
  <images/bloom-5.pdf, id=56, 615.29875pt x 210.7875pt>
 File: images/bloom-5.pdf Graphic file (type pdf)
  <use images/bloom-5.pdf>
-Package pdftex.def Info: images/bloom-5.pdf used on input line 187.
+Package pdftex.def Info: images/bloom-5.pdf used on input line 188.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
 
 
-Package caption Warning: \label without proper \caption on input line 150.
+Package caption Warning: \label without proper \caption on input line 151.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `bloom-2' on page 5 undefined on input line 188.
+LaTeX Warning: Reference `bloom-2' on page 5 undefined on input line 189.
 
 
-Package caption Warning: \label without proper \caption on input line 161.
+Package caption Warning: \label without proper \caption on input line 162.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `bloom-3' on page 5 undefined on input line 188.
+LaTeX Warning: Reference `bloom-3' on page 5 undefined on input line 189.
 
 
-Package caption Warning: \label without proper \caption on input line 150.
+Package caption Warning: \label without proper \caption on input line 151.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `bloom-2' on page 5 undefined on input line 188.
+LaTeX Warning: Reference `bloom-2' on page 5 undefined on input line 189.
 
 
-Package caption Warning: \label without proper \caption on input line 161.
+Package caption Warning: \label without proper \caption on input line 162.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `bloom-3' on page 5 undefined on input line 188.
+LaTeX Warning: Reference `bloom-3' on page 5 undefined on input line 189.
 
 <images/bloom-6.pdf, id=57, 615.29875pt x 210.7875pt>
 File: images/bloom-6.pdf Graphic file (type pdf)
  <use images/bloom-6.pdf>
-Package pdftex.def Info: images/bloom-6.pdf used on input line 198.
+Package pdftex.def Info: images/bloom-6.pdf used on input line 199.
 (pdftex.def)             Requested size: 469.75502pt x 160.93027pt.
  [5 <./images/ac-automaton.pdf>] [6 <./images/bloom-1.pdf> <./images/bloom-2.pdf> <./images/bloom-3.pdf>]
 
-LaTeX Warning: Reference `boyer-moore' on page 7 undefined on input line 217.
+LaTeX Warning: Reference `boyer-moore' on page 7 undefined on input line 218.
 
 [7 <./images/bloom-4.pdf> <./images/bloom-5.pdf>] <images/knuth-morris-pratt-1.pdf, id=92, 716.6775pt x 131.49126pt>
 File: images/knuth-morris-pratt-1.pdf Graphic file (type pdf)
  <use images/knuth-morris-pratt-1.pdf>
-Package pdftex.def Info: images/knuth-morris-pratt-1.pdf used on input line 235.
+Package pdftex.def Info: images/knuth-morris-pratt-1.pdf used on input line 236.
 (pdftex.def)             Requested size: 469.75502pt x 86.18858pt.
  <images/knuth-morris-pratt-2.pdf, id=93, 716.6775pt x 131.49126pt>
 File: images/knuth-morris-pratt-2.pdf Graphic file (type pdf)
  <use images/knuth-morris-pratt-2.pdf>
-Package pdftex.def Info: images/knuth-morris-pratt-2.pdf used on input line 241.
+Package pdftex.def Info: images/knuth-morris-pratt-2.pdf used on input line 242.
 (pdftex.def)             Requested size: 469.75502pt x 86.18858pt.
  <images/knuth-morris-pratt-3.pdf, id=94, 716.6775pt x 131.49126pt>
 File: images/knuth-morris-pratt-3.pdf Graphic file (type pdf)
  <use images/knuth-morris-pratt-3.pdf>
-Package pdftex.def Info: images/knuth-morris-pratt-3.pdf used on input line 247.
+Package pdftex.def Info: images/knuth-morris-pratt-3.pdf used on input line 248.
 (pdftex.def)             Requested size: 469.75502pt x 86.18858pt.
  <images/knuth-morris-pratt-4.pdf, id=95, 716.6775pt x 131.49126pt>
 File: images/knuth-morris-pratt-4.pdf Graphic file (type pdf)
  <use images/knuth-morris-pratt-4.pdf>
-Package pdftex.def Info: images/knuth-morris-pratt-4.pdf used on input line 253.
+Package pdftex.def Info: images/knuth-morris-pratt-4.pdf used on input line 254.
 (pdftex.def)             Requested size: 469.75502pt x 86.18858pt.
 
-Overfull \hbox (55.47269pt too wide) in paragraph at lines 266--272
+Overfull \hbox (55.47269pt too wide) in paragraph at lines 267--273
  [][] 
  []
 
 [8 <./images/bloom-6.pdf>] [9 <./images/knuth-morris-pratt-1.pdf> <./images/knuth-morris-pratt-2.pdf> <./images/knuth-morris-pratt-3.pdf> <./images/knuth-morris-pratt-4.pdf>] Excluding 'comment' comment.
-./A Comparison of String Search Algorithms for Deep Packet Inspection.tex:363: Extra alignment tab has been changed to \cr.
-<template> \endtemplate 
-                        
-l.363 ...n{4}{c}{ASH} & \multicolumn{4}{c}{ATSC} &
-                                                   \multicolumn{4}{c}{YW} \\
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-./A Comparison of String Search Algorithms for Deep Packet Inspection.tex:364: Extra alignment tab has been changed to \cr.
-<template> \endtemplate 
-                        
-l.364 ...s.com"} & \multicolumn{2}{c}{``google"} &
-                                                   \multicolumn{2}{c}{``amaz...
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-
-Overfull \hbox (543.63593pt too wide) in paragraph at lines 362--368
- [][] 
- []
-
-
-Overfull \hbox (6.6626pt too wide) in paragraph at lines 372--373
+Missing character: There is no Â in font cmr10!
+Missing character: There is no   in font cmr10!
+ [10] [11]
+Overfull \hbox (6.6626pt too wide) in paragraph at lines 481--482
 []\OT1/cmr/m/n/10 Books: Alices-Adventures-in-Wonderland.txt, Pride-and-Prejudice.txt, The-Prince.txt, Bird-Watching.txt,
  []
 
 
-Overfull \hbox (23.05147pt too wide) in paragraph at lines 372--373
+Overfull \hbox (23.05147pt too wide) in paragraph at lines 481--482
 \OT1/cmr/m/n/10 The-Adventures-of-Sherlock-Holmes.txt, The-Yellow-Wallpaper.txt, Frankenstein-or-the-Modern-Prometheus.txt,
  []
 
-Excluding 'comment' comment. <graphs/cum_sum_packets_google.png, id=123, 6022.5pt x 3613.5pt>
+Excluding 'comment' comment. [12] <graphs/cum_sum_packets_google.png, id=132, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_google.png Graphic file (type png)
  <use graphs/cum_sum_packets_google.png>
-Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 479.
+Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 596.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/cum_sum_packets_amazonaws-com.png, id=125, 6022.5pt x 3613.5pt>
+ <graphs/cum_sum_packets_amazonaws-com.png, id=134, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_amazonaws-com.png Graphic file (type png)
  <use graphs/cum_sum_packets_amazonaws-com.png>
-Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 485.
+Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 602.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-bitap.png, id=126, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-bitap.png, id=135, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-bitap.png Graphic file (type png)
  <use graphs/term_length_compare-bitap.png>
-Package pdftex.def Info: graphs/term_length_compare-bitap.png used on input line 491.
+Package pdftex.def Info: graphs/term_length_compare-bitap.png used on input line 608.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [10] [11 <./graphs/cum_sum_packets_google.png>]
+ <graphs/term_length_compare-boyer-moore.png, id=136, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-boyer-moore.png Graphic file (type png)
+ <use graphs/term_length_compare-boyer-moore.png>
+Package pdftex.def Info: graphs/term_length_compare-boyer-moore.png used on input line 614.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ <graphs/term_length_compare-horspool.png, id=137, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-horspool.png Graphic file (type png)
+ <use graphs/term_length_compare-horspool.png>
+Package pdftex.def Info: graphs/term_length_compare-horspool.png used on input line 620.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ <graphs/term_length_compare-knuth-morris-pratt.png, id=138, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-knuth-morris-pratt.png Graphic file (type png)
+ <use graphs/term_length_compare-knuth-morris-pratt.png>
+Package pdftex.def Info: graphs/term_length_compare-knuth-morris-pratt.png used on input line 626.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ <graphs/term_length_compare-naive.png, id=139, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-naive.png Graphic file (type png)
+ <use graphs/term_length_compare-naive.png>
+Package pdftex.def Info: graphs/term_length_compare-naive.png used on input line 632.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ <graphs/term_length_compare-rabin-karp.png, id=140, 6022.5pt x 3613.5pt>
+File: graphs/term_length_compare-rabin-karp.png Graphic file (type png)
+ <use graphs/term_length_compare-rabin-karp.png>
+Package pdftex.def Info: graphs/term_length_compare-rabin-karp.png used on input line 638.
+(pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
+ (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [13] [14 <./graphs/cum_sum_packets_google.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-) [12] [13 <./graphs/cum_sum_packets_amazonaws-com.png>] [14 <./graphs/term_length_compare-bitap.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
+) [15 <./graphs/cum_sum_packets_amazonaws-com.png>] [16 <./graphs/term_length_compare-bitap.png> <./graphs/term_length_compare-boyer-moore.png>] [17 <./graphs/term_length_compare-horspool.png> <./graphs/term_length_compare-knuth-morris-pratt.png>] [18 <./graphs/term_length_compare-naive.png> <./graphs/term_length_compare-rabin-karp.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -473,18 +498,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4364 strings out of 493093
- 66431 string characters out of 6134990
- 157380 words of memory out of 5000000
- 7765 multiletter control sequences out of 15000+600000
+ 4512 strings out of 493093
+ 69218 string characters out of 6134990
+ 163170 words of memory out of 5000000
+ 7902 multiletter control sequences out of 15000+600000
  10144 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,9n,40p,1446b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,9n,44p,1446b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (14 pages, 2330205 bytes).
+Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (18 pages, 4426987 bytes).
 PDF statistics:
- 190 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
+ 212 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
