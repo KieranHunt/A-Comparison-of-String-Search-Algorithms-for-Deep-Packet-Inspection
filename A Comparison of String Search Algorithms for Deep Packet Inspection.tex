@@ -289,6 +289,23 @@ Each algorithm was separately run over the dataset for a variety of search terms
 
 Search terms: google, amazonaws.com
 
+\begin{table}[h!bt]
+  \centering
+  \begin{tabular}{l|ccc}
+    Book & Short Name & Size & Number of Characters\\
+    \hline
+    Alices Adventures in Wonderland & AAW & 269K & 167516\\
+    Bird Watching & BW & 653K & 609763\\
+    Frankenstein or the Modern Prometheus & FMP & 525K & 448687\\
+    Pride and Prejudice & PP & 780K & 717573\\
+    The Adventures of Sherlock Holmes & ASH & 653K & 594916\\
+    The Adventures of Tom Sawyer Complete & ATSC & 525K & 421872\\
+    The Yellow Wallpaper & YW & 58K & 52079
+  \end{tabular}
+  \caption{Books, their shorthand names, size on disk (in bytes) and the number of characters in each.}
+  \label{table:book-reference}
+\end{table}
+
 \begin{comment}
     grep -ao "amazonaws.com" datasetA.cap | wc -w
     grep -ao "google" datasetA.cap | wc -w
@@ -356,6 +373,7 @@ In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 t
     13. & 6389 & 6389 & &
   \end{tabular}
   \caption{Search term prefix and suffix frequency for the packet dataset: Dataset A.}
+  \label{table:packets-prefix-suffix-frequency}
 \end{table}
 
 \begin{longtable}{l|l|l||l|l}
@@ -473,7 +491,8 @@ In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 t
     11. & 0 & 0 & & \\
     12. & 0 & 0 & & \\
     13. & 0 & 0 & & \\
-    \caption{Search string prefix and suffix frequency in the sample books.}
+    \caption{Search string prefix and suffix frequency in the sample books. For reference to the index, see Table \ref{table:book-reference}}
+    \label{table:books-prefix-suffix-frequency}
 \end{longtable}
 
 
@@ -494,7 +513,7 @@ The following section provides the results obtained from running the myriad of t
 
 Initially every algorithm was run over the packet sample dataset, described in section \ref{sec:testing-environment}. The time that each algorithm took to process each packet was recorded and logged. This is repeat for all algorithms. The entire test is then run twenty times over to smooth over potential anomalies caused by the server.
 
-The first of these tests was for the string: ``google". The mean processing time across all packets and the twenty tests is presented in table \ref{table:packet-google-mean}. The results of which can be found in Table \ref{table:packet-google-mean}.
+The first of these tests was for the string: ``google". The mean processing time across all packets and the twenty tests is presented in Table \ref{table:packet-google-mean}. The results of which can be found in Table \ref{table:packet-google-mean}.
 
 \begin{table}[h!bt]
   \centering
@@ -507,7 +526,7 @@ The first of these tests was for the string: ``google". The mean processing time
   \label{table:packet-google-mean}
 \end{table}
 
-After searching for the keyword ``google", the tests were rerun using the keyword ``amazonaws.com``. The mean processing times for the algorithms with the keyword ``amazonaws.com" can be found in Table \ref{table:packet-amazonaws-mean}.
+After searching for the keyword ``google", the tests were rerun using the keyword ``amazonaws.com``. Again, each algorithm inspected every packet in dataset A and those inspections were run twenty times. A total of 180 million data points were gathered. The mean processing times for the algorithms, calculated from those datapoints, with the keyword ``amazonaws.com" can be found in Table \ref{table:packet-amazonaws-mean}.
 
 \begin{table}[h!bt]
   \centering
@@ -520,22 +539,7 @@ After searching for the keyword ``google", the tests were rerun using the keywor
   \label{table:packet-amazonaws-mean}
 \end{table}
 
-\begin{table}[h!bt]
-  \centering
-  \begin{tabular}{l|cc}
-    Book & Short Name & Size\\
-    \hline
-    Alices Adventures in Wonderland & AAW & 269K \\
-    Bird Watching & BW & 653K \\
-    Frankenstein or the Modern Prometheus & FMP & 525K \\
-    Pride and Prejudice & PP & 780K \\
-    The Adventures of Sherlock Holmes & ASH & 653K \\
-    The Adventures of Tom Sawyer Complete & ATSC & 525K \\
-    The Yellow Wallpaper & YW & 58K
-  \end{tabular}
-  \caption{}
-\end{table}
-
+Following the packet testing, the test system was altered so that it could more easily test plain text files as opposed to the pcaps. The plain text files were tested in a slightly different way as they were searched through in their entirety, unlike the pcap files which were searched through packet by packet. Each book was inspected by each algorithm and the tests were repeated 1000 times each. First, the word ``google" was searched for. The mean packet processing times of which can be found in Table \ref{table:mean-books-google}.
 
 \begin{table}[h!bt]
   \centering
@@ -552,6 +556,8 @@ After searching for the keyword ``google", the tests were rerun using the keywor
   \caption{Mean processing time of DPI when inspecting plain text for the term ``google"}
   \label{table:mean-books-google}
 \end{table}
+
+After completing the search for ``google", the same exact tests were run again with the term ``amazonaws.com". See Table \ref{table:mean-books-amazonaws} for mean processing time across the data.
 
 \begin{table}[h!bt]
   \centering
@@ -571,7 +577,7 @@ After searching for the keyword ``google", the tests were rerun using the keywor
 
 \section{Analysis}
 
-The results (section \ref{sec:results}) of the testing have proven to be quite interesting. From tables \ref{table:packet-amazonaws-mean} and \ref{table:packet-google-mean} we are able to fairly easily see which algorithms are the most performant. By comparing the mean packet processing times against each other we can arrange the algorithms by speed. Table \ref{table:ranked-mean-packet-processing-time} shows that, from the test results, the Horspool (subsection \ref{sec:horspool}) and Boyer-Moore
+The results (Section \ref{sec:results}) of the testing have proven to be quite interesting. From Tables \ref{table:packet-amazonaws-mean} and \ref{table:packet-google-mean} we are able to fairly easily see which algorithms are the most performant. By comparing the mean packet processing times against each other we can arrange the algorithms by speed. Table \ref{table:ranked-mean-packet-processing-time} shows that, from the test results, the Horspool and Boyer-Moore (Subsections \ref{sec:horspool} and \ref{sec:boyer-moore}) are the fastest performing of the algorithms.
 
 \begin{table}[h!bt]
   \centering
@@ -589,6 +595,21 @@ The results (section \ref{sec:results}) of the testing have proven to be quite i
   \caption{Algorithms ranked by their mean packet processing speeds.}
   \label{table:ranked-mean-packet-processing-time}
 \end{table}
+
+What is interesting to note is that, on average, the searching for the term ``google" is slower than searching for ``amazonaws.com" (See Tables \ref{table:packet-google-mean}, \ref{table:packet-amazonaws-mean}, \ref{table:mean-books-google} and \ref{table:mean-books-amazonaws}). This result is oddly counter-intuitive on the surface as one would expect, for most of the algorithms, that a longer string would take longer to find as a greater number of comparisons need to take place to assure correctness. We have formulated the following hypothesis for why searching for ``amazonaws.com" takes less time than searching for ``google":
+\begin{itemize}
+  \item popular substrings
+  \item term frequency
+\end{itemize}
+
+\subsection{Popular Substrings}
+
+A couple of the algorithms used rely heavily on comparing progressively large slices of the search term to pieces of the text. Some of these work from the last character to the first and these are called suffix matchers. Others work from the first character to the last, these are called prefix matchers. 
+
+For prefix and suffix matchers, text with a high frequency of substrings matching substrings within the search terms means that much processing time is wasted on evaluating string similar but ultimately often not the same as the original search string. As can be seen from Table \ref{table:books-prefix-suffix-frequency}, substrings of ``amazonaws.com" are generally found more frequently than those of ``google". In Table \ref{table:packets-prefix-suffix-frequency}, google substrings are generally more popular than those of amazon however it becomes apparent that ``google" leads to a match more often more early than ``amazonaws.com". ``google" is guaranteed a match after the fourth character (for both prefix and suffix matching) whilst ``amazonaws.com" is only guaranteed a match after the ninth character.
+
+\subsection{Term Frequency}
+
 
 
 \begin{figure}[h!bt]
