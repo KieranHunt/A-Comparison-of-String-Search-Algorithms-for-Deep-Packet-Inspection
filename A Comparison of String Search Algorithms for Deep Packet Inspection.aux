@@ -53,6 +53,7 @@
 \newlabel{sec:knuth-morris-pratt}{{2.8}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.9}Summary}{8}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Average algorithm time and space complexity\relax }}{8}}
+\newlabel{table:algorithm-sumamry}{{1}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Testing Environment}{8}}
 \newlabel{sec:testing-environment}{{3}{8}}
 \citation{Bloom1970}
@@ -81,21 +82,26 @@
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Mean processing time of DPI when inspecting plain text for the term ``google"\relax }}{13}}
 \newlabel{table:mean-books-google}{{8}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Analysis}{13}}
-\citation{*}
-\bibstyle{apalike}
-\bibdata{bibliography}
-\bibcite{Aho1975}{{1}{1975}{{Aho and Corasick}}{{}}}
 \@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Mean processing time of DPI when inspecting plain text for the term ``amazonaws.com"\relax }}{14}}
 \newlabel{table:mean-books-amazonaws}{{9}{14}}
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Algorithms ranked by their mean packet processing speeds.\relax }}{14}}
 \newlabel{table:ranked-mean-packet-processing-time}{{10}{14}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Popular Substrings}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Term Frequency}{14}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``google"\relax }}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"\relax }}{15}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Comparison of mean packet processing time between ``google" and ``amazonaws.com". Tests in which ``google" were faster are marked by a ``G" and tests in which ``amazonaws.com" finished earlier are marked with a ``A".\relax }}{15}}
+\newlabel{table:packet-mean-comparison}{{11}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Substring frequency for both prefix and suffix\relax }}{15}}
+\newlabel{fig:packet-substring-frequency}{{6}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Term Frequency}{15}}
+\citation{*}
+\bibstyle{apalike}
+\bibdata{bibliography}
+\bibcite{Aho1975}{{1}{1975}{{Aho and Corasick}}{{}}}
 \bibcite{Baeza1992}{{2}{1992}{{Baeza-Yates and Gonnet}}{{}}}
 \bibcite{Bloom1970}{{3}{1970}{{Bloom}}{{}}}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Packet processing speeds relative to search term frequency.\relax }}{16}}
+\newlabel{table:packet-adjusted}{{12}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``google"\relax }}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{16}}
 \bibcite{Boyer1977}{{4}{1977}{{Boyer and Moore}}{{}}}
 \bibcite{Fan2014}{{5}{2014}{{Fan et~al.}}{{}}}
 \bibcite{Horspool1980}{{6}{1980}{{Horspool}}{{}}}
@@ -103,9 +109,10 @@
 \bibcite{Knuth1977}{{8}{1977}{{Knuth et~al.}}{{}}}
 \bibcite{Song2005}{{9}{2005}{{Song et~al.}}{{}}}
 \bibcite{Wu1992}{{10}{1992}{{Wu and Udi}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparison between the cumulative processing times of the Horspool algorithm for the terms ``amazonaws.com" and ``google"\relax }}{17}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Comparison between the cumulative processing times of the Knuth-Morris-Pratt algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Comparison between the cumulative processing times of the Na{\"i}ve algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Comparison between the cumulative processing times of the Rabin-Karp algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"\relax }}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Comparison between the cumulative processing times of the Horspool algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Comparison between the cumulative processing times of the Knuth-Morris-Pratt algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Comparison between the cumulative processing times of the Na{\"i}ve algorithm for the terms ``amazonaws.com" and ``google"\relax }}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Comparison between the cumulative processing times of the Rabin-Karp algorithm for the terms ``amazonaws.com" and ``google"\relax }}{20}}

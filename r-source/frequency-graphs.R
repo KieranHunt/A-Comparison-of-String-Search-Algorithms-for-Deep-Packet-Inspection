@@ -24,7 +24,8 @@ ggplot(NULL) +
     geom_line(data = amazon, aes(x=index, y = amazon_suffix, colour = "amazonaws.com - suffix")) +
     geom_line(data = google, aes(x=index, y = google_prefix, colour = "google - suffix")) +
     geom_line(data = google, aes(x=index, y = google_suffix, colour = "google - prefix")) +
-    labs(title = "", y = "Total count", x = "Index") +
-    scale_y_continuous(labels = comma, trans=log2_trans()) +
+    labs(title = "Packet Data Substring Frequency", y = "Total count", x = "Index") +
+    scale_y_continuous(labels = comma, trans=log10_trans()) +
+    scale_x_continuous(breaks=1:13) +
     fte_theme()
-ggsave("frequency-graph.png", dpi=300, width=4, height=3)
+ggsave("frequency-graph.png", dpi=400, width=5, height=3)

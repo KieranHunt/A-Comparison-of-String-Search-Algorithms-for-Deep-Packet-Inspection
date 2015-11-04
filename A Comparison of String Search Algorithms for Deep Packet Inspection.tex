@@ -271,6 +271,7 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
     Space & O(\(m\)) & O(\(m\)) & O(\(\)) & O(\(m + ?\)) & O(\(alphabet\)) & O(\(m\)) & N/A & O(\(p\))
   \end{tabular}
   \caption{Average algorithm time and space complexity}
+  \label{table:algorithm-sumamry}
 \end{table}
 
 
@@ -608,8 +609,66 @@ A couple of the algorithms used rely heavily on comparing progressively large sl
 
 For prefix and suffix matchers, text with a high frequency of substrings matching substrings within the search terms means that much processing time is wasted on evaluating string similar but ultimately often not the same as the original search string. As can be seen from Table \ref{table:books-prefix-suffix-frequency}, substrings of ``amazonaws.com" are generally found more frequently than those of ``google". In Table \ref{table:packets-prefix-suffix-frequency}, google substrings are generally more popular than those of amazon however it becomes apparent that ``google" leads to a match more often more early than ``amazonaws.com". ``google" is guaranteed a match after the fourth character (for both prefix and suffix matching) whilst ``amazonaws.com" is only guaranteed a match after the ninth character.
 
+Algorithms which make use of string suffixes include:
+\begin{itemize}
+  \item Aho-Corasick (Subsection \ref{sec:aho-corasick})
+  \item Bitap (Subsection \ref{sec:bitap})
+  \item Boyer-Moore (Subsection \ref{sec:boyer-moore})
+  \item Horspool (Subsection \ref{sec:horspool})
+  \item Knuth-Morris-Pratt (Subsection \ref{sec:knuth-morris-pratt})
+\end{itemize}
+
+Algorithms which make use of string prefixes include:
+\begin{itemize}
+  \item Na{\"i}ve (Subsection \ref{sec:naive})
+  \item Rabin-Karp (Subsection \ref{sec:rabin-karp})
+\end{itemize}
+
+\begin{table}[h!bt]
+  \centering
+  \begin{tabular}{r|ccccccc}
+    & Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris Pratt & Na{\"i}ve & Rabin-Karp\\
+    \hline
+    Suffix vs Prefix & Suffix & N/A & Suffix & Suffix & Suffix & Prefix & Prefix \\ 
+    Fastest & A & G & A & A & G & A & A
+  \end{tabular}
+  \caption{Comparison of mean packet processing time between ``google" and ``amazonaws.com". Tests in which ``google" were faster are marked by a ``G" and tests in which ``amazonaws.com" finished earlier are marked with a ``A".}
+  \label{table:packet-mean-comparison}
+\end{table}
+
+Figure \ref{fig:packet-substring-frequency} gives a better visual representation of the data shown in Table \ref{table:packets-prefix-suffix-frequency}. As you can see from Table \ref{table:packet-mean-comparison}, searching for ``amazonaws.com" is mostly faster than searching for ``google". This is possibly because of the steep drop off seen in the number of matching suffixes after the suffix ``s.com".
+
+\begin{figure}[h!bt]
+  \centering
+  \includegraphics[width=\textwidth]{graphs/substring_frequency.png}
+  \caption{Substring frequency for both prefix and suffix}
+  \label{fig:packet-substring-frequency}
+\end{figure}
+
 \subsection{Term Frequency}
 
+The search terms ``google" and ``amazonaws.com" do not appear at the same frequency in dataset A. ``google" is found 15223 times whilst ``amazonaws.com" can be found only 6389. We believe that this is the main factor changing the speed of most of the algorithms. Because dataset A contains more occurrences of ``google" than ``amazonaws.com" some of the algorithms will spend more time matching and less time skipping over text that clearly does not have a match.
+
+By adjusting the mean times according to frequency, we are able to better understand the relationship between the frequency of the term and how it affects the processing speed. Table \ref{table:packet-adjusted} contains those adjustments.
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{l|ccc}
+    Algorithms & ``google" & ``amazonaws.com" - adjusted & Percentage Difference\\
+    \hline
+    Bitap & 71.51 & 115.79 & 61.93\%\\
+    Bloom & 48300 & 121969.84 & 152.53\%\\
+    Boyer-Moore & 5.642 & 12.45 & 120.70\%\\
+    Horspool & 5.804 & 12.01 & 106.95\%\\
+    Knuth-Morris-Pratt & 11.48 & 29.59 & 157.78\%\\
+    Na{\"i}ve & 15.95 & 37.90 & 137.67\%\\
+    Rabin-Karp & 1720 & 4052.95 & 135.64\%
+  \end{tabular}
+  \caption{Packet processing speeds relative to search term frequency.}
+  \label{table:packet-adjusted}
+\end{table}
+
+Table \ref{table:packet-adjusted} shows that, by adjusting for search term occurrence, searching for the term ``amazonaws.com`` is slower per occurrence of the term in the packet. The percentages shown in the table may correlate with the data from Table \ref{table:algorithm-sumamry}.
 
 
 \begin{figure}[h!bt]
