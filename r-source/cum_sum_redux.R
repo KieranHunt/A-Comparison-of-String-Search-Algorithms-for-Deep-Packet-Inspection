@@ -7,7 +7,7 @@ library(reshape2)
 
 source("fte_theme.R")
 
-results_location <- "results/packets/amazonaws.com/"
+results_location <- "results/packets/google/"
 
 num_rounds <- 20
 data_raw <- list()
@@ -45,7 +45,7 @@ ggplot(combined_data, aes(x=id)) +
     geom_line(aes(y = KnuthMorrisPratt.cum_sum, color = "KnuthMorrisPratt")) +
     geom_line(aes(y = Naive.cum_sum, color = "Naive")) +
     geom_line(aes(y = RabinKarp.cum_sum, color = "RabinKarp")) +
-    scale_y_continuous(trans=log2_trans()) +
+    scale_y_continuous(labels = comma, trans=log10_trans()) +
     labs(title = "Cumulative total of each algorithm", y = "Cumulative total (μs)", x = "Packet number") +
     fte_theme() +
     theme(axis.text.x = element_text(hjust=1, angle=90))

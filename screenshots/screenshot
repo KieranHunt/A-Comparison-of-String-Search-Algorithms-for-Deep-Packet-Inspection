@@ -1,0 +1,3 @@
+#!/bin/bash
+
+webkit2png -F -d -W 1080 $1

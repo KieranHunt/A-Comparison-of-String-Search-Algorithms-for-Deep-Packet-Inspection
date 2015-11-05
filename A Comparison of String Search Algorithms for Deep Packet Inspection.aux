@@ -53,7 +53,7 @@
 \newlabel{sec:knuth-morris-pratt}{{2.8}{8}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.9}Summary}{8}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Average algorithm time and space complexity\relax }}{8}}
-\newlabel{table:algorithm-sumamry}{{1}{8}}
+\newlabel{table:algorithm-summary}{{1}{8}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Testing Environment}{8}}
 \newlabel{sec:testing-environment}{{3}{8}}
 \citation{Bloom1970}
@@ -62,7 +62,7 @@
 \newlabel{fig:knuth-morris-pratt}{{5}{9}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Books, their shorthand names, size on disk (in bytes) and the number of characters in each.\relax }}{10}}
 \newlabel{table:book-reference}{{2}{10}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \relax }}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Search term prefix and suffix index reference\relax }}{10}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Search term prefix and suffix frequency for the packet dataset: Dataset A.\relax }}{10}}
 \newlabel{table:packets-prefix-suffix-frequency}{{4}{10}}
 \gdef \LT@i {\LT@entry 
@@ -86,22 +86,32 @@
 \newlabel{table:mean-books-amazonaws}{{9}{14}}
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Algorithms ranked by their mean packet processing speeds.\relax }}{14}}
 \newlabel{table:ranked-mean-packet-processing-time}{{10}{14}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Popular Substrings}{14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Comparing Search Terms}{14}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}Popular Substrings}{14}}
 \@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Comparison of mean packet processing time between ``google" and ``amazonaws.com". Tests in which ``google" were faster are marked by a ``G" and tests in which ``amazonaws.com" finished earlier are marked with a ``A".\relax }}{15}}
 \newlabel{table:packet-mean-comparison}{{11}{15}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Substring frequency for both prefix and suffix\relax }}{15}}
 \newlabel{fig:packet-substring-frequency}{{6}{15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Term Frequency}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}Term Frequency}{15}}
+\citation{Bloom1970}
+\citation{Karp1987}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Packet processing speeds relative to search term frequency.\relax }}{16}}
+\newlabel{table:packet-adjusted}{{12}{16}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparing Algorithms}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``google"\relax }}{16}}
+\newlabel{fig:packets-cum-sum-google}{{7}{16}}
+\citation{Boyer1977}
+\citation{Horspool1980}
+\citation{Boyer1977}
 \citation{*}
 \bibstyle{apalike}
 \bibdata{bibliography}
 \bibcite{Aho1975}{{1}{1975}{{Aho and Corasick}}{{}}}
 \bibcite{Baeza1992}{{2}{1992}{{Baeza-Yates and Gonnet}}{{}}}
 \bibcite{Bloom1970}{{3}{1970}{{Bloom}}{{}}}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Packet processing speeds relative to search term frequency.\relax }}{16}}
-\newlabel{table:packet-adjusted}{{12}{16}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``google"\relax }}{16}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"\relax }}{17}}
+\newlabel{fig:packets-cum-sum-amazonaws}{{8}{17}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{17}}
 \bibcite{Boyer1977}{{4}{1977}{{Boyer and Moore}}{{}}}
 \bibcite{Fan2014}{{5}{2014}{{Fan et~al.}}{{}}}
 \bibcite{Horspool1980}{{6}{1980}{{Horspool}}{{}}}
@@ -109,10 +119,9 @@
 \bibcite{Knuth1977}{{8}{1977}{{Knuth et~al.}}{{}}}
 \bibcite{Song2005}{{9}{2005}{{Song et~al.}}{{}}}
 \bibcite{Wu1992}{{10}{1992}{{Wu and Udi}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"\relax }}{17}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Comparison between the cumulative processing times of the Bitap algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Comparison between the cumulative processing times of the Horspool algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Comparison between the cumulative processing times of the Knuth-Morris-Pratt algorithm for the terms ``amazonaws.com" and ``google"\relax }}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Comparison between the cumulative processing times of the Knuth-Morris-Pratt algorithm for the terms ``amazonaws.com" and ``google"\relax }}{20}}
 \@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Comparison between the cumulative processing times of the Na{\"i}ve algorithm for the terms ``amazonaws.com" and ``google"\relax }}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Comparison between the cumulative processing times of the Rabin-Karp algorithm for the terms ``amazonaws.com" and ``google"\relax }}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Comparison between the cumulative processing times of the Rabin-Karp algorithm for the terms ``amazonaws.com" and ``google"\relax }}{21}}

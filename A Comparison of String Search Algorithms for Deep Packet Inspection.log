@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  4 NOV 2015 12:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.8.3)  5 NOV 2015 12:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -446,67 +446,67 @@ Overfull \hbox (23.05147pt too wide) in paragraph at lines 501--502
  []
 
 Excluding 'comment' comment. [12] [13]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 602.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 604.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 602.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 604.
  [14]
-Overfull \hbox (6.3848pt too wide) in paragraph at lines 629--635
+Overfull \hbox (6.3848pt too wide) in paragraph at lines 631--637
  [][] 
  []
 
 <graphs/substring_frequency.png, id=139, 2007.5pt x 1204.5pt>
 File: graphs/substring_frequency.png Graphic file (type png)
  <use graphs/substring_frequency.png>
-Package pdftex.def Info: graphs/substring_frequency.png used on input line 643.
+Package pdftex.def Info: graphs/substring_frequency.png used on input line 645.
 (pdftex.def)             Requested size: 469.75502pt x 281.84451pt.
  [15 <./graphs/substring_frequency.png>] <graphs/cum_sum_packets_google.png, id=145, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_google.png Graphic file (type png)
  <use graphs/cum_sum_packets_google.png>
-Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 676.
+Package pdftex.def Info: graphs/cum_sum_packets_google.png used on input line 681.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
  <graphs/cum_sum_packets_amazonaws-com.png, id=146, 6022.5pt x 3613.5pt>
 File: graphs/cum_sum_packets_amazonaws-com.png Graphic file (type png)
  <use graphs/cum_sum_packets_amazonaws-com.png>
-Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 682.
+Package pdftex.def Info: graphs/cum_sum_packets_amazonaws-com.png used on input line 688.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-bitap.png, id=147, 6022.5pt x 3613.5pt>
+ [16 <./graphs/cum_sum_packets_google.png>] <graphs/term_length_compare-bitap.png, id=151, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-bitap.png Graphic file (type png)
  <use graphs/term_length_compare-bitap.png>
-Package pdftex.def Info: graphs/term_length_compare-bitap.png used on input line 688.
+Package pdftex.def Info: graphs/term_length_compare-bitap.png used on input line 703.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-boyer-moore.png, id=148, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-boyer-moore.png, id=152, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-boyer-moore.png Graphic file (type png)
  <use graphs/term_length_compare-boyer-moore.png>
-Package pdftex.def Info: graphs/term_length_compare-boyer-moore.png used on input line 694.
+Package pdftex.def Info: graphs/term_length_compare-boyer-moore.png used on input line 709.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-horspool.png, id=149, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-horspool.png, id=153, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-horspool.png Graphic file (type png)
  <use graphs/term_length_compare-horspool.png>
-Package pdftex.def Info: graphs/term_length_compare-horspool.png used on input line 700.
+Package pdftex.def Info: graphs/term_length_compare-horspool.png used on input line 715.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-knuth-morris-pratt.png, id=150, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-knuth-morris-pratt.png, id=154, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-knuth-morris-pratt.png Graphic file (type png)
  <use graphs/term_length_compare-knuth-morris-pratt.png>
-Package pdftex.def Info: graphs/term_length_compare-knuth-morris-pratt.png used on input line 706.
+Package pdftex.def Info: graphs/term_length_compare-knuth-morris-pratt.png used on input line 721.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-naive.png, id=151, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-naive.png, id=155, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-naive.png Graphic file (type png)
  <use graphs/term_length_compare-naive.png>
-Package pdftex.def Info: graphs/term_length_compare-naive.png used on input line 712.
+Package pdftex.def Info: graphs/term_length_compare-naive.png used on input line 727.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- <graphs/term_length_compare-rabin-karp.png, id=152, 6022.5pt x 3613.5pt>
+ <graphs/term_length_compare-rabin-karp.png, id=156, 6022.5pt x 3613.5pt>
 File: graphs/term_length_compare-rabin-karp.png Graphic file (type png)
  <use graphs/term_length_compare-rabin-karp.png>
-Package pdftex.def Info: graphs/term_length_compare-rabin-karp.png used on input line 718.
+Package pdftex.def Info: graphs/term_length_compare-rabin-karp.png used on input line 733.
 (pdftex.def)             Requested size: 469.75502pt x 281.80775pt.
- (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [16 <./graphs/cum_sum_packets_google.png>]
+ (./A Comparison of String Search Algorithms for Deep Packet Inspection.bbl [17 <./graphs/cum_sum_packets_amazonaws-com.png>]
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ” in font cmr10!
-) [17 <./graphs/cum_sum_packets_amazonaws-com.png>] [18 <./graphs/term_length_compare-bitap.png> <./graphs/term_length_compare-boyer-moore.png>] [19 <./graphs/term_length_compare-horspool.png> <./graphs/term_length_compare-knuth-morris-pratt.png>] [20 <./graphs/term_length_compare-naive.png> <./graphs/term_length_compare-rabin-karp.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
+) [18 <./graphs/term_length_compare-bitap.png>] [19 <./graphs/term_length_compare-boyer-moore.png> <./graphs/term_length_compare-horspool.png>] [20 <./graphs/term_length_compare-knuth-morris-pratt.png> <./graphs/term_length_compare-naive.png>] [21 <./graphs/term_length_compare-rabin-karp.png>] (./A Comparison of String Search Algorithms for Deep Packet Inspection.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -515,18 +515,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 4541 strings out of 493093
- 69890 string characters out of 6134990
- 160234 words of memory out of 5000000
- 7927 multiletter control sequences out of 15000+600000
+ 4543 strings out of 493093
+ 69949 string characters out of 6134990
+ 160252 words of memory out of 5000000
+ 7929 multiletter control sequences out of 15000+600000
  10144 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,9n,44p,1446b,452s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (20 pages, 4544371 bytes).
+Output written on "A Comparison of String Search Algorithms for Deep Packet Inspection.pdf" (21 pages, 4496725 bytes).
 PDF statistics:
- 221 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 224 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

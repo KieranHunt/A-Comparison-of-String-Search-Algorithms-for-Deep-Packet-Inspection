@@ -267,11 +267,11 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
   \begin{tabular}{r|cccccccccc}
     & Aho-Corasick & Bitap & Bloom & Boyer-Moore & Horspool & Knuth-Morris-Pratt & Na{\"i}ve & Rabin-Karp\\
     \hline
-    Time & O(\(m + n + o\)) & O(\(mn\)) & O(\(n^2\)) & O(\(mn\)) & O(\(n\)) & O(\(k\)) & O(\(n^2\)) & O(\(n + m\)) \\
+    Time & O(\(m + n + o\)) & O(\(mn\)) & O(\(n^2\)) & O(\(m+n\)) & O(\(n\)) & O(\(k\)) & O(\(n^2\)) & O(\(n + m\)) \\
     Space & O(\(m\)) & O(\(m\)) & O(\(\)) & O(\(m + ?\)) & O(\(alphabet\)) & O(\(m\)) & N/A & O(\(p\))
   \end{tabular}
   \caption{Average algorithm time and space complexity}
-  \label{table:algorithm-sumamry}
+  \label{table:algorithm-summary}
 \end{table}
 
 
@@ -350,7 +350,7 @@ In dataset A, ``google" occurs 15223 times whilst ``amazonaws.com" occurs 6389 t
     12. & amazonaws.co  & mazonaws.com  &  & \\
     13. & amazonaws.com  & amazonaws.com  &  & 
   \end{tabular}
-  \caption{}
+  \caption{Search term prefix and suffix index reference}
 \end{table}
 
 \begin{table}[h!bt]
@@ -597,13 +597,15 @@ The results (Section \ref{sec:results}) of the testing have proven to be quite i
   \label{table:ranked-mean-packet-processing-time}
 \end{table}
 
+\subsection{Comparing Search Terms}
+
 What is interesting to note is that, on average, the searching for the term ``google" is slower than searching for ``amazonaws.com" (See Tables \ref{table:packet-google-mean}, \ref{table:packet-amazonaws-mean}, \ref{table:mean-books-google} and \ref{table:mean-books-amazonaws}). This result is oddly counter-intuitive on the surface as one would expect, for most of the algorithms, that a longer string would take longer to find as a greater number of comparisons need to take place to assure correctness. We have formulated the following hypothesis for why searching for ``amazonaws.com" takes less time than searching for ``google":
 \begin{itemize}
   \item popular substrings
   \item term frequency
 \end{itemize}
 
-\subsection{Popular Substrings}
+\subsubsection{Popular Substrings}
 
 A couple of the algorithms used rely heavily on comparing progressively large slices of the search term to pieces of the text. Some of these work from the last character to the first and these are called suffix matchers. Others work from the first character to the last, these are called prefix matchers. 
 
@@ -645,7 +647,7 @@ Figure \ref{fig:packet-substring-frequency} gives a better visual representation
   \label{fig:packet-substring-frequency}
 \end{figure}
 
-\subsection{Term Frequency}
+\subsubsection{Term Frequency}
 
 The search terms ``google" and ``amazonaws.com" do not appear at the same frequency in dataset A. ``google" is found 15223 times whilst ``amazonaws.com" can be found only 6389. We believe that this is the main factor changing the speed of most of the algorithms. Because dataset A contains more occurrences of ``google" than ``amazonaws.com" some of the algorithms will spend more time matching and less time skipping over text that clearly does not have a match.
 
@@ -668,20 +670,33 @@ By adjusting the mean times according to frequency, we are able to better unders
   \label{table:packet-adjusted}
 \end{table}
 
-Table \ref{table:packet-adjusted} shows that, by adjusting for search term occurrence, searching for the term ``amazonaws.com`` is slower per occurrence of the term in the packet. The percentages shown in the table may correlate with the data from Table \ref{table:algorithm-sumamry}.
+Table \ref{table:packet-adjusted} shows that, by adjusting for search term occurrence, searching for the term ``amazonaws.com`` is slower per occurrence of the term in the packet. The percentages shown in the table may correlate with the data from Table \ref{table:algorithm-summary}.
 
+\subsection{Comparing Algorithms}
+
+Figures \ref{fig:packets-cum-sum-google} and \ref{fig:packets-cum-sum-amazonaws} provide insight into the comparative of each algorithm for both the ``google" search (Figure \ref{fig:packets-cum-sum-google}) and for ``amazonaws.com" (Figure \ref{fig:packets-cum-sum-amazonaws}). These graphs were created by plotting the cumulative sum of the time it takes for each algorithm to processes dataset A. The y-axis for each has been set to a log scale so that all of the lines would fit onto a reasonably sized space. 
 
 \begin{figure}[h!bt]
   \centering
   \includegraphics[width=\textwidth]{graphs/cum_sum_packets_google.png}
   \caption{Cumulative sum of processing times of packets in Dataset A for the term ``google"}
+  \label{fig:packets-cum-sum-google}
 \end{figure}
 
 \begin{figure}[h!bt]
   \centering
   \includegraphics[width=\textwidth]{graphs/cum_sum_packets_amazonaws-com.png}
   \caption{Cumulative sum of processing times of packets in Dataset A for the term ``amazonaws.com"}
+  \label{fig:packets-cum-sum-amazonaws}
 \end{figure}
+
+From these Figures we can group the algorithms into three distinct sections based on speed. First and fastest is group one which contains Boyer-Moore, Horspool, Knuth-Morris-Pratt and Na{\"i}ve. Group two, who are averagely fast, contain Rabin-Karp and Bitap. The third and slowest group contains just Bloom.
+
+The results of the Bloom filter \citep{Bloom1970} (Subsection \ref{sec:bloom}) show that it is many orders of magnitude slower than any of the other algorithms. This is expected behaviour. Bloom filters were never designed with string search in mind. A bloom filter performs best when performing a lookup on a known length string. An example of such would be routing traffic based on IP address. Some trie-based solutions exist but a Bloom filter is used when space efficiency is needed. Since the Bloom filter is performing many different hashing algorithms on the same input to compare it against the hash table generated by the preprocessing step, it is comparable to the Rabin-Karp algorithm \citep{Karp1987} (Subsection \ref{sec:rabin-karp}). The Rabin-Karp algorithm performs much better for two reasons. Firstly, it uses an extremely fast hashing algorithm known as FarmHash\footnote{\url{https://github.com/google/farmhash}}. Secondly, it hashes the input string exactly once and compares it to the hash of the string being searched for whereas the Bloom filter hashes the input string many times and then checks for a match in the many hash tables.
+
+Boyer-Moore \citep{Boyer1977} (Subsection \ref{sec:boyer-moore}) and Horspool \citep{Horspool1980} (Subsection \ref{sec:horspool}) are, rather unsurprisingly, the fastests algorithms. Both algorithms average between five and six milliseconds to process a packet (Tables \ref{table:packet-google-mean} and \ref{table:packet-amazonaws-mean}). According to Table \ref{table:algorithm-summary}, both algorithms have similar time complexities. Boyer-Moore having O(\(n+m\)) and Horspool having O(\(n\)). These algorithms are, unsurprising, related in that the Horspool algorithm is an refinement on the work done in \cite{Boyer1977}.
+
+
 
 \begin{figure}[h!bt]
   \centering
