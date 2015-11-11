@@ -21,25 +21,43 @@
 \maketitle
 
 \begin{abstract}
-Contemporary deep packet inspection systems often rely on custom hardware or entrenched ideas about the string search algorithms used. These algorithms have mathematically provable time or space complexities however not much is empirically known about their performance on real-world packet datasets. We felt that some string search algorithms could produce results that differed from their theoretical performance within the context of packet inspection. Furthermore, we sought to show that even algorithms with similar theoretical performances could produce differing practical results. Our approach was to reimplement a variety of the established string search algorithms and run them through a diverse set of tests with both real-world and constructed datasets. Our tests found that the Bloom filter was the fastest overall, Rabin-Karp was the most memory efficient and that the Naïve algorithm was the slowest. Furthermore we found that, although the Bloom and Cuckoo filters have the same theoretical time complexity, the cuckoo filter was almost twice as slow as its counterpart. These findings help to show which algorithms perform best in practice and can help future algorithm designers to improve on the current approaches. In practice we show which algorithms a designer of a deep packet inspection system should consider implementing based on our findings.
+Contemporary deep packet inspection systems often rely on custom hardware or entrenched ideas about the string search algorithms used. These algorithms have mathematically provable time and space complexities however not much is empirically known about their performance on real-world packet datasets. We felt that some string search algorithms could produce results that differed from their theoretical performance within the context of packet inspection. Furthermore, we sought to show that even algorithms with similar theoretical performances could produce differing practical results. Our approach was to reimplement a variety of the established string search algorithms and run them through a diverse set of tests with both real-world and constructed datasets. Our tests found that the Boyer-Moore and Horspool algorithms were the fastest overall with the Bloom filter being by far the slowest. These findings help to show which algorithms perform best in practice and can help future algorithm designers to improve on the current approaches. In practice we show which algorithms a designer of a deep packet inspection system should consider implementing based on our findings.
 \end{abstract}
 
 \tableofcontents
 
 \section{Introduction}
-Deep packet inspection (DPI) forms part of the packet filtering that takes place on a computer network. For the general routing of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and obvious intrusions.
+Deep packet inspection (DPI) forms part of the packet filtering that takes place on many computer networks. For the general routing and very shallow inspection of a packet it is only necessary to look as far as the packet's headers. DPI takes the inspection further by closely examining the packet's payload data; its purpose is to detect data in a packet that is interesting to the network administrator. Generally, data that is interesting to the administrator is viruses, spam, incomplete or corrupted protocols, and other obvious intrusions.
+
 
 Deep packet inspection is very prevalent today. From Internet Service Providers (ISPs) to Corporate Networks. Packets are inspected for a plethora of reasons. 
 
-Today, many approaches exist to perform deep packet inspection. These approaches can be broadly split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (should cite) but has slower compile times and does not scale as well. Software, like Bro\footnote{\url{https://www.bro.org/}} and Snort\footnote{\url{https://www.snort.org/}}, is generally run on commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Owing to the fact that it is not tied to the underlying architecture, software implementations are able to easily scale both vertically (speed of the machines) and horizontally (number of machines) to match the needs of the network.
+Today, many approaches exist to perform deep packet inspection. These approaches can be broadly split into two categories: hardware and software. A hardware implementation generally requires the use of expensive and custom systems such as Field Programmable Gate Arrays (FPGAs). Hardware is generally faster than software (citation here) but has slower compile times and does not scale as well. Software, like Bro\footnote{\url{https://www.bro.org/}} and Snort\footnote{\url{https://www.snort.org/}}, is generally run on commercial off-the-shelf (COTS) machines or on virtualised infrastructure. Owing to the fact that it is not tied to the underlying architecture, software implementations are able to easily scale both vertically (speed of the machines) and horizontally (number of machines) to match the needs of the network.
 
-Bro and Snort are two platforms designed for network analysis.
+Deep packet inspection faces multiple challenges which affect how well it can perform. A few of these challenges include: 
+\begin{itemize}
+  \item \textbf{Algorithm time and space complexity}. Different packet inspection algorithms each perform their inspection at different speeds and use different amounts of memory. These are classified by using the ``Big-O" notation and more can be found in Subsection \ref{sec:summary}.
+  \item \textbf{The number of intrusion signatures}. In \cite{AbuHmed2007}, the authors point out that the number of signatures affects the inspection time and space usage. For most algorithms, more signatures generally means that the inspection will take longer and consume more memory. Furthermore, as more and more malicious software is released, the number of signatures needed to detect everything increases.
+  \item \textbf{Detecting malicious content in encrypted data}. By very definition encrypted content cannot be viewed and as such deep packet inspection is ineffectual \citep{AbuHmed2007}. Systems in which encryption is terminated before the deep packet inspection takes place are available however they do require a level of trust between the end user and the party conducting the DPI that is only seen in a corporate or government environment.
+\end{itemize}
 
-Deep packet inspection is traditionally done within an intrusion detection system (IDS) and as such needs to be fast enough that it can at least match the speed of the network. Failing to at least match the network speed will result in a slowdown of traffic flowing into the network, the queuing of yet to be inspected packets and, if the situation does not improve in time, the eventual dropping of packets as the queue fills. This result is certainly undesired as it negatively impacts the quality of service (QOS) experienced by users on the network.  
 
-Deep packet searching in general is very similar to searching through text. Packets contain a payload which is analogous to a body of text. Packet inspection differs from text searching in that searches through text are generally for a single or only a few terms at a time whilst in packet inspection scenarios the search terms can number in the thousands. 
+Deep packet inspection is traditionally done within an intrusion detection system (IDS) and as such needs to be fast enough that it can at least match the speed of the network. Failing to at least match the network speed will result in a slowdown of traffic flowing into the network, the queuing of yet to be inspected packets and, if the situation does not improve in time, the eventual dropping of packets as the queue fills. This result is certainly undesired as it negatively impacts the quality of service (QOS) experienced by users on the network.
+
+
+Deep packet searching in general is very similar to searching through text. Packets contain a payload which is analogous to a body of text. Packet inspection differs from text searching in that searches through text are generally for a single or only a few terms at a time whilst in packet inspection scenarios the search terms can number in the thousands. The data in the packet itself can often be binary in nature too.
 
 \section{Algorithms} \label{algorithms}
+
+Deep packet inspection algorithms need to have the following traits in order to be considered for any commercial IDS \citep{AbuHmed2007}:
+\begin{itemize}
+  \item Deterministic performance. The algorithm needs to have a known performance for a given set of signatures and inputs. Without a known performance the algorithm has the chance to slow down the entire packet inspection operation.
+  \item Memory efficiency. An algorithm needs to be memory efficient. Like with time, the algorithm must occupy a reasonable memory footprint 
+  \item Dynamic update.
+  \item Signatures.
+  \item Scalability.
+\end{itemize}
+
 
 The following section gives some information on the different algorithms used. 
 
@@ -260,7 +278,7 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
   \label{fig:knuth-morris-pratt}
 \end{figure}
 
-\subsection{Summary}
+\subsection{Summary} \label{sec:summary}
 
 \begin{table}[h!bt]
   \centering
@@ -276,13 +294,12 @@ The Knuth-Morris-Pratt (KMP) algorithm \cite{Knuth1977} is too an extension the 
 
 
 \section{Testing Environment} \label{sec:testing-environment}
-Give a run-down of the system used.
 
 The Rust language was used to implement all of the search algorithms. Rust was selected because it is fast and safe. Both  qualities are important in a real-time packet inspection scenarios. For interacting with both packet captures and live capture handles we used the Rust pcap\footnote{\url{https://github.com/ebfull/pcap}} library. This library provides a wrapper around libpcap\footnote{\url{http://www.tcpdump.org/}}. Through pcap, we are able to easily retrieve the packet data which can in turn be run through the various algorithms (See part \ref{algorithms}).
 
-Each algorithm was implemented in Rust. All but the Bloom\footnote{\url{https://github.com/nicklan/bloom-rs}} \cite{Bloom1970} and Cuckoo\footnote{\url{https://github.com/seiflotfy/rust-cuckoofilter}} \cite{Fan2014} filters were were implemented by the authors.
+Each algorithm was implemented in Rust. All but the Bloom\footnote{\url{https://github.com/nicklan/bloom-rs}} \cite{Bloom1970} and Aho-Corasick\footnote{\url{https://github.com/BurntSushi/aho-corasick}} \cite{Aho1975} filters were were implemented by the authors.
 
-Talk about the pcap format.
+(Talk about the pcap format.)
 
 The data used in the tests was real-world packet data collected the DNS servers of local schools. The libpcap library, in conjunction with tcpdump was used to collect and save the packet information. The total number of captured packets was culled to a reasonable one million packets to allow for reasonable processing and interpretation times.
 
@@ -694,7 +711,7 @@ From these Figures we can group the algorithms into three distinct sections base
 
 The results of the Bloom filter \citep{Bloom1970} (Subsection \ref{sec:bloom}) show that it is many orders of magnitude slower than any of the other algorithms. This is expected behaviour. Bloom filters were never designed with string search in mind. A bloom filter performs best when performing a lookup on a known length string. An example of such would be routing traffic based on IP address. Some trie-based solutions exist but a Bloom filter is used when space efficiency is needed. Since the Bloom filter is performing many different hashing algorithms on the same input to compare it against the hash table generated by the preprocessing step, it is comparable to the Rabin-Karp algorithm \citep{Karp1987} (Subsection \ref{sec:rabin-karp}). The Rabin-Karp algorithm performs much better for two reasons. Firstly, it uses an extremely fast hashing algorithm known as FarmHash\footnote{\url{https://github.com/google/farmhash}}. Secondly, it hashes the input string exactly once and compares it to the hash of the string being searched for whereas the Bloom filter hashes the input string many times and then checks for a match in the many hash tables.
 
-Boyer-Moore \citep{Boyer1977} (Subsection \ref{sec:boyer-moore}) and Horspool \citep{Horspool1980} (Subsection \ref{sec:horspool}) are, rather unsurprisingly, the fastests algorithms. Both algorithms average between five and six milliseconds to process a packet (Tables \ref{table:packet-google-mean} and \ref{table:packet-amazonaws-mean}). According to Table \ref{table:algorithm-summary}, both algorithms have similar time complexities. Boyer-Moore having O(\(n+m\)) and Horspool having O(\(n\)). These algorithms are, unsurprising, related in that the Horspool algorithm is an refinement on the work done in \cite{Boyer1977}.
+Boyer-Moore \citep{Boyer1977} (Subsection \ref{sec:boyer-moore}) and Horspool \citep{Horspool1980} (Subsection \ref{sec:horspool}) are, rather unsurprisingly, the fastests algorithms. Both algorithms average between five and six milliseconds to process a packet (Tables \ref{table:packet-google-mean} and \ref{table:packet-amazonaws-mean}). According to Table \ref{table:algorithm-summary}, both algorithms have similar time complexities. Boyer-Moore having O(\(n+m\)) and Horspool having O(\(n\)). These algorithms are, unsurprising, related in that the Horspool algorithm is an refinement on the work done by \cite{Boyer1977}.
 
 
 

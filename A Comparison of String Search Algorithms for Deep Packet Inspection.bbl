@@ -1,5 +1,10 @@
 \begin{thebibliography}{}
 
+\bibitem[AbuHmed et~al., 2007]{AbuHmed2007}
+AbuHmed, T., Mohaisen, A., and Nyang, D. (2007).
+\newblock A survey on deep packet inspection for intrusion detection systems.
+\newblock {\em ??????? (?????)}.
+
 \bibitem[Aho and Corasick, 1975]{Aho1975}
 Aho, A. and Corasick, M. (1975).
 \newblock Efficient string matching: An aid to bibliographic search.
