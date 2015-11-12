@@ -3,6 +3,12 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/kieran/Work/msc-algorithms-for-dpi/A Comparison of String Search Algorithms for Deep Packet Inspection.aux
 The style file: apalike.bst
 Database file #1: bibliography.bib
+Name 1 in "Cascarano, N., and Ciminiera, L., and Risso, F." has a comma at the end for entry Cascarano2011
+while executing---line 1023 of file apalike.bst
+Name 1 in "Cascarano, N., and Ciminiera, L., and Risso, F." has a comma at the end for entry Cascarano2011
+while executing---line 1023 of file apalike.bst
+Name 2 in "Cascarano, N., and Ciminiera, L., and Risso, F." has a comma at the end for entry Cascarano2011
+while executing---line 1023 of file apalike.bst
 Name 1 in "AbuHmed, T., and Mohaisen, A., and Nyang, D." has a comma at the end for entry AbuHmed2007
 while executing---line 1023 of file apalike.bst
 Name 1 in "AbuHmed, T., and Mohaisen, A., and Nyang, D." has a comma at the end for entry AbuHmed2007
@@ -51,6 +57,10 @@ Name 1 in "Aho, A., and Corasick, M." has a comma at the end for entry Aho1975
 while executing---line 1098 of file apalike.bst
 Name 1 in "Boyer, R., and Moore, J." has a comma at the end for entry Boyer1977
 while executing---line 1098 of file apalike.bst
+Name 1 in "Cascarano, N., and Ciminiera, L., and Risso, F." has a comma at the end for entry Cascarano2011
+while executing---line 1098 of file apalike.bst
+Name 2 in "Cascarano, N., and Ciminiera, L., and Risso, F." has a comma at the end for entry Cascarano2011
+while executing---line 1098 of file apalike.bst
 Name 1 in "Fan, B., and Andersen, D., and Kaminsky, M., and Mitzenmacher, M." has a comma at the end for entry Fan2014
 while executing---line 1098 of file apalike.bst
 Name 2 in "Fan, B., and Andersen, D., and Kaminsky, M., and Mitzenmacher, M." has a comma at the end for entry Fan2014
@@ -69,45 +79,45 @@ Name 2 in "Song, H., and Turner, J., and Dharmapurikar, S., and Lockwood, J." ha
 while executing---line 1098 of file apalike.bst
 Name 3 in "Song, H., and Turner, J., and Dharmapurikar, S., and Lockwood, J." has a comma at the end for entry Song2005
 while executing---line 1098 of file apalike.bst
-You've used 11 entries,
+You've used 12 entries,
             1935 wiz_defined-function locations,
-            529 strings with 5212 characters,
-and the built_in function-call counts, 3594 in all, are:
-= -- 334
-> -- 161
+            535 strings with 5440 characters,
+and the built_in function-call counts, 3930 in all, are:
+= -- 365
+> -- 179
 < -- 7
-+ -- 58
-- -- 52
-* -- 267
-:= -- 671
-add.period$ -- 33
-call.type$ -- 11
-change.case$ -- 81
-chr.to.int$ -- 11
-cite$ -- 11
-duplicate$ -- 153
-empty$ -- 239
-format.name$ -- 73
-if$ -- 678
++ -- 64
+- -- 58
+* -- 294
+:= -- 735
+add.period$ -- 36
+call.type$ -- 12
+change.case$ -- 89
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 166
+empty$ -- 259
+format.name$ -- 80
+if$ -- 740
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 58
-num.names$ -- 33
-pop$ -- 84
+missing$ -- 12
+newline$ -- 63
+num.names$ -- 36
+pop$ -- 92
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 89
 quote$ -- 0
-skip$ -- 114
+skip$ -- 124
 stack$ -- 0
-substring$ -- 138
-swap$ -- 11
+substring$ -- 150
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 72
 warning$ -- 0
-while$ -- 22
+while$ -- 24
 width$ -- 0
-write$ -- 134
-(There were 33 error messages)
+write$ -- 146
+(There were 38 error messages)

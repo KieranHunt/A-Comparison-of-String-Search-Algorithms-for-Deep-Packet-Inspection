@@ -3,7 +3,7 @@
 \bibitem[AbuHmed et~al., 2007]{AbuHmed2007}
 AbuHmed, T., Mohaisen, A., and Nyang, D. (2007).
 \newblock A survey on deep packet inspection for intrusion detection systems.
-\newblock {\em ??????? (?????)}.
+\newblock {\em Korea Communications Society (Information and Communication)}.
 
 \bibitem[Aho and Corasick, 1975]{Aho1975}
 Aho, A. and Corasick, M. (1975).
@@ -24,6 +24,11 @@ Bloom, B. (1970).
 Boyer, R. and Moore, J. (1977).
 \newblock A fast string searching algorithm.
 \newblock {\em Communications of the ACM}.
+
+\bibitem[Cascarano et~al., 2011]{Cascarano2011}
+Cascarano, N., Ciminiera, L., and Risso, F. (2011).
+\newblock Optimizing deep packet inspection for high-speed traffic analysis.
+\newblock {\em Journal of Network and Systems Management}.
 
 \bibitem[Fan et~al., 2014]{Fan2014}
 Fan, B., Andersen, D., Kaminsky, M., and Mitzenmacher, M. (2014).
