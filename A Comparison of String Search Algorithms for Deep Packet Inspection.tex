@@ -10,6 +10,8 @@
 \usepackage{subcaption}
 \usepackage[margin=1in]{geometry}
 \usepackage{longtable}
+\usepackage{mathtools}
+\usepackage{amssymb}
 
 \newcommand*\rot{\rotatebox{90}}
 
@@ -58,7 +60,14 @@ Deep packet inspection algorithms need to have the following traits in order to 
   \item \textbf{Scalability}. Algorithms should not only be able to scale vertically (by increasing the speed and memory of the machine) but also horizontally by adding additional cores and even entirely separate inspection machines. 
 \end{itemize}
 
-A technique often suggested as a way to speed up the packet inspection process is that of imposing a hard limit on how far into a payload the inspection takes place. This imposes limitations on the use of Kleene closures in the inspection.
+A technique often suggested as a way to speed up the packet inspection process is that of imposing a hard limit on how far into a payload the inspection takes place. Like saying that you only inspect the first 1000 bytes. This imposes limitations on the use of Kleene closures in the inspection. Kleene closures are defined as follows \citep{Lee1969}:
+
+\begin{displaymath}
+  V* =  \bigcup _{i \in \mathbb{N}} V_i = \{\epsilon\} \cup V_1 \cup V_2 \cup V_3 \cup ...
+  \label{math:kleene}
+\end{displaymath}
+
+An example of where imposing a limit on the inspection may fall short is when application layers protocols are similar or even built on top of each other. Protocols built using a modified version on the HTTP protocol may look identical to the HTTP protocol within a certain number of bytes. This could lead to a misclassification of traffic and perhaps errors in detecting malicious packets.
 
 The following subsections give some information on the different algorithms used. 
 

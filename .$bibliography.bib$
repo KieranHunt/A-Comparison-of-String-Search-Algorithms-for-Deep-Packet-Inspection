@@ -1,0 +1,161 @@
+% This file was created with JabRef 2.10.
+% Encoding: MacRoman
+
+
+@Article{AbuHmed2007,
+  Title                    = {A Survey on Deep Packet Inspection for Intrusion Detection Systems},
+  Author                   = {AbuHmed, T., and Mohaisen, A., and Nyang, D.},
+  Journal                  = {Korea Communications Society (Information and Communication)},
+  Year                     = {2007},
+
+  File                     = {:AbuHmed2007.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.11.09}
+}
+
+@Article{Aho1975,
+  Title                    = {Efficient String Matching: An Aid to Bibliographic Search},
+  Author                   = {Aho, A., and Corasick, M.},
+  Journal                  = {Communications of the ACM},
+  Year                     = {1975},
+
+  File                     = {:Aho1975.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Baeza1992,
+  Title                    = {A New Approach to Text Searching},
+  Author                   = {Baeza-Yates, R. and Gonnet, G.},
+  Journal                  = {Communications of the ACM},
+  Year                     = {1992},
+
+  File                     = {:Baeza1992.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Bloom1970,
+  Title                    = {Space/Time Trade-offs in Hash Coding with Allowable Errors},
+  Author                   = {Bloom, B.},
+  Journal                  = {Communications of the ACM},
+  Year                     = {1970},
+
+  File                     = {:Bloom1970.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Boyer1977,
+  Title                    = {A Fast String Searching Algorithm},
+  Author                   = {Boyer, R., and Moore, J.},
+  Journal                  = {Communications of the ACM},
+  Year                     = {1977},
+
+  File                     = {:Boyer1977.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Cascarano2011,
+  Title                    = {Optimizing Deep Packet Inspection for High-Speed Traffic Analysis},
+  Author                   = {Cascarano, N., and Ciminiera, L., and Risso, F.},
+  Journal                  = {Journal of Network and Systems Management},
+  Year                     = {2011},
+
+  File                     = {:Cascarano2011.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.11.12}
+}
+
+@Conference{Fan2014,
+  Title                    = {Cuckoo Filter: Practically Better Than Bloom},
+  Author                   = {Fan, B., and Andersen, D., and Kaminsky, M., and Mitzenmacher, M.},
+  Booktitle                = {Proceedings of the 10th ACM International on Conference on Emerging Networking Experiments and Technologies},
+  Year                     = {2014},
+
+  File                     = {:Fan2014.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Horspool1980,
+  Title                    = {Practical Fast Searching in Strings},
+  Author                   = {Horspool, N.},
+  Journal                  = {Software: Practice and Experience},
+  Year                     = {1980},
+
+  File                     = {:Horspool1980.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Karp1987,
+  Title                    = {Efficient randomized pattern-matching algorithms},
+  Author                   = {Karp, R., and Rabin, M.},
+  Journal                  = {IBM Journal of Research and Development},
+  Year                     = {1987},
+
+  Abstract                 = {We present randomized algorithms to solve the following string-matching problem and some of its generalizations: Given a string X of length n (the pattern) and a string Y (the text), find the first occurrence of X as a consecutive block within Y. The algorithms represent strings of length n by much shorter strings called fingerprints, and achieve their efficiency by manipulating fingerprints instead of longer strings. The algorithms require a constant number of storage locations, and essentially run in real time. They are conceptually simple and easy to implement. The method readily generalizes to higher-dimensional patternmatching problems.},
+  File                     = {:Karp1987.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.02}
+}
+
+@Article{Knuth1977,
+  Title                    = {Fast Pattern Matching in Strings},
+  Author                   = {Knuth, D., and Morris, J., and Pratt, V.},
+  Journal                  = {SIAM Journal on Computing},
+  Year                     = {1977},
+
+  Abstract                 = {An algorithm is presented which finds all occurrences of one. given string within another, in running time proportional to the sum of the lengths of the strings. The constant of proportionality is low enough to make this algorithm of practical use, and the procedure can also be extended to deal with some more general pattern-matching problems. A theoretical application of the algorithm shows that the set of concatenations of even palindromes, i.e., the language {can}*, can be recognized in linear time. Other algorithms which run even faster on the average are also considered.},
+  File                     = {:Knuth1977.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Article{Kumar2006,
+  Title                    = {Algorithms to Accelerate Multiple Regular Expressions Matching for Deep Packet Inspection},
+  Author                   = {Kumar, S. and Dharmapurikar, S. and Yu, F., and Crowley, P. and Turner, J.},
+  Journal                  = {ACM SIGCOMM Computer Communication Review},
+  Year                     = {2006},
+
+  File                     = {:Kumar2006.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.11.13}
+}
+
+@Book{Lee1969,
+  Title                    = {Note on Fuzzy Languages},
+  Author                   = {Lee, E., and Zadeh, L.},
+  Publisher                = {World Scientific},
+  Year                     = {1969},
+
+  File                     = {:Lee1969.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.11.12}
+}
+
+@Article{Song2005,
+  Title                    = {Fast Hash Table Lookup Using Extended Bloom Filter: An Aid to Network Processing},
+  Author                   = {Song, H., and Turner, J., and Dharmapurikar, S., and Lockwood, J.},
+  Journal                  = {ACM SIGCOMM Computer Communication Review},
+  Year                     = {2005},
+
+  File                     = {:Horspool1980.pdf:PDF},
+  Owner                    = {kieran},
+  Timestamp                = {2015.09.03}
+}
+
+@Conference{Wu1992,
+  Title                    = {Agrep — a Fast Approximate Pattern-matching Tool},
+  Author                   = {Wu, S. and Udi, M.},
+  Booktitle                = {Usenix Winter 1992},
+  Year                     = {1992},
+
+  File                     = {:Wu1992.pdf:PDF},
+  Journal                  = {ACM SIGCOMM Computer Communication Review},
+  Owner                    = {kieran},
+  Timestamp                = {2015.10.26}
+}
+
