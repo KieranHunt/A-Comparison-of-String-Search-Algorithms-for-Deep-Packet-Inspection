@@ -1,0 +1,22 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Algorithms}{3}
+\contentsline {subsection}{\numberline {2.1}Na{\"i}ve}{3}
+\contentsline {subsection}{\numberline {2.2}Aho-Corasick}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}The goto function}{5}
+\contentsline {subsubsection}{\numberline {2.2.2}The failure function}{5}
+\contentsline {subsubsection}{\numberline {2.2.3}The output function}{5}
+\contentsline {subsection}{\numberline {2.3}Bitap}{6}
+\contentsline {subsection}{\numberline {2.4}Bloom}{6}
+\contentsline {subsection}{\numberline {2.5}Boyer-Moore}{7}
+\contentsline {subsection}{\numberline {2.6}Horspool}{8}
+\contentsline {subsection}{\numberline {2.7}Rabin-Karp}{9}
+\contentsline {subsection}{\numberline {2.8}Knuth-Morris-Pratt}{9}
+\contentsline {subsection}{\numberline {2.9}Summary}{9}
+\contentsline {section}{\numberline {3}Testing Environment}{10}
+\contentsline {section}{\numberline {4}Results}{13}
+\contentsline {section}{\numberline {5}Analysis}{15}
+\contentsline {subsection}{\numberline {5.1}Comparing Search Terms}{15}
+\contentsline {subsubsection}{\numberline {5.1.1}Popular Substrings}{15}
+\contentsline {subsubsection}{\numberline {5.1.2}Term Frequency}{17}
+\contentsline {subsection}{\numberline {5.2}Comparing Algorithms}{17}
+\contentsline {section}{\numberline {6}Conclusion}{19}
